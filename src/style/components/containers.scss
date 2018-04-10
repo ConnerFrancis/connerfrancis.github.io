@@ -1,0 +1,17 @@
+/**
+ * Containers
+ */
+ 
+.full {
+    min-height: 100%;
+    min-width: 100%;
+}
+ 
+.box {
+    
+    &.dark {
+        /* Colors */
+        background-color: $grey-darkest;
+        color: $text-white;
+    }
+}

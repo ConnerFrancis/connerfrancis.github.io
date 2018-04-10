@@ -1,0 +1,22 @@
+// Neutral tones
+$black:         #000;
+$grey-darkest:  lighten($black, 7%);
+$grey-darker:   lighten($black, 20%);
+$grey-dark:     lighten($black, 35%);
+$grey:          lighten($black, 50%);
+$grey-light:    lighten($black, 65%);
+$grey-lighter:  lighten($black, 80%);
+$grey-lightest: lighten($black, 95%);
+$gray-darker:   $grey-darker;
+$gray-dark:     $grey-dark;
+$gray:          $grey;
+$gray-light:    $grey-light;
+$gray-lighter:  $grey-lighter;
+$gray-lightest: $grey-lightest;
+
+// Text
+$text:          rgba(0,0,0,0.95);
+$text-light:    rgba(0,0,0,0.85);
+$text-lighter:  rgba(0,0,0,0.70);
+$text-lightest: rgba(0,0,0,0.55);
+$text-white: rgba(255,255,255,0.95);
