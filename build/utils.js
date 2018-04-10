@@ -8,11 +8,6 @@ const packageConfig = require('../package.json')
 function resolve (dir) {
   return path.join(__dirname, '..', dir)
 }
-// Util function for scss modules
-function resolveStyle (file) {
-  let resolved = 'src/style/modules/' + file + '.scss'
-  resolve(resolved)
-}
 
 exports.assetsPath = function (_path) {
   const assetsSubDirectory = process.env.NODE_ENV === 'production'
@@ -75,7 +70,7 @@ exports.cssLoaders = function (options) {
       {
         loader: 'sass-resources-loader',
         options: {
-          resources: [resolveStyle('text')]
+          resources: [resolve('src/style/modules/text.scss'), resolve('src/style/modules/colors.scss')]
         }
       }
     ),

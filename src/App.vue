@@ -1,5 +1,5 @@
 <template>
-  
+
   <div id="app">
     <div>
       <router-link
@@ -8,16 +8,16 @@
         :to="page.path"
       >{{ page.meta.name }}</router-link>
     </div>
-    
+
     <router-view></router-view>
   </div>
-  
+
 </template>
 
 <script>
-  import mh    from '@/services/mathhelper'
-  import pages from '@/pages'
-  
+  import mh       from '@/services/mathhelper'
+  import pageList from '@/pages'
+
   export default {
     name: 'App',
     data () {
@@ -26,7 +26,7 @@
       }
     }
   }
-  
+
 </script>
 
 <style lang="scss">
@@ -42,5 +42,5 @@
     min-width: 100vw;
     min-height: 100vh;
   }
-  
+
 </style>
