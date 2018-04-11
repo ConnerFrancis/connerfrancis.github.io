@@ -10,7 +10,7 @@
     "start": "npm run dev",
     "startLocal": "npm run devLocal",
     "build": "node build/build.js",
-    "deploy": "npm run build; push-dir --dir=dist --branch=gh-pages --cleanup"
+    "deploy": "npm run build; push-dir --dir=dist --branch=master --cleanup"
   },
   "dependencies": {
     "vue": "^2.5.2",
