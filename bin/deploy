@@ -1,5 +1,21 @@
 #!/usr/bin/env bash
+
+echo ""
+echo "Adding all files to `dev` branch..."
+echo ""
 git add .
+
+echo ""
+echo "Commiting changes..."
+echo ""
 git commit
+
+echo ""
+echo "Pushing changes..."
+echo ""
 git push
+
+echo ""
+echo "Running npm deploy script..."
+echo ""
 npm run deploy
