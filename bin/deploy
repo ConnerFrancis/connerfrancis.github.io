@@ -1,7 +1,7 @@
 #!/usr/bin/env bash
 
 echo ""
-echo "Adding all files to `dev` branch..."
+echo "Adding all files to dev branch..."
 echo ""
 git add .
 
