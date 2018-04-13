@@ -1,14 +1,6 @@
 <template>
 
   <div id="app">
-    <div>
-      <router-link
-        v-for="page in pages"
-        :key="page.name"
-        :to="page.path"
-      >{{ page.meta.name }}</router-link>
-    </div>
-
     <router-view></router-view>
   </div>
 
@@ -16,7 +8,7 @@
 
 <script>
   import mh       from '@/services/mathhelper'
-  import pageList from '@/pages'
+  import pages from '@/pages'
 
   export default {
     name: 'App',
@@ -34,6 +26,8 @@
   @import './style/main.scss';
 
   #app {
+    /* Display */
+    @include flex-container;
     /* Font */
     -webkit-font-smoothing: antialiased;
     -moz-osx-font-smoothing: grayscale;
@@ -41,6 +35,8 @@
     /* Size */
     min-width: 100vw;
     min-height: 100vh;
+    margin: 0;
+    padding: 0;
   }
 
 </style>

@@ -13,6 +13,7 @@
     "deploy": "npm run build; push-dir --dir=dist --branch=master --cleanup"
   },
   "dependencies": {
+    "flexboxgrid-sass": "^8.0.5",
     "vue": "^2.5.2",
     "vue-router": "^3.0.1",
     "vue-style-loader": "^3.1.2"

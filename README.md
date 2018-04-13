@@ -1,1 +1,2 @@
-**README and info is located at [the master branch](https://github.com/ConnerFrancis/connerfrancis.github.io/tree/master).**
+### Resources
+1. [Flexbox Grid Sass](https://github.com/hugeinc/flexboxgrid-sass)

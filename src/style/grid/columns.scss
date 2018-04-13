@@ -1,0 +1,16 @@
+.col {
+    /* Display */
+    // grow, shrink, basis
+    flex-grow: 1;
+    flex-shrink: 0;
+    flex-basis: auto;
+    /* Size */
+    margin: $gutter;
+    padding: $padding;
+}
+
+@for $i from 1 through $columns {
+    .col-#{$i} {
+        @extend .col;
+    }
+}

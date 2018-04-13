@@ -14,8 +14,3 @@ echo ""
 echo "==> Pushing changes..."
 echo ""
 git push
-
-echo ""
-echo "==> Running npm deploy script..."
-echo ""
-npm run deploy  

@@ -70,7 +70,7 @@ exports.cssLoaders = function (options) {
       {
         loader: 'sass-resources-loader',
         options: {
-          resources: [resolve('src/style/modules/text.scss'), resolve('src/style/modules/colors.scss')]
+          resources: resolve('src/style/modules/index.scss')
         }
       }
     ),

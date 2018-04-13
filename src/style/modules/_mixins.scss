@@ -1,0 +1,62 @@
+// Check if a number is
+// in a range
+@function inRange($min, $max, $val) {
+  $_out: false;
+  
+  @for $i from $min through $max {
+    @if $val == $i {
+      $_out: true;
+    }
+  }
+  
+  @return $_out;
+}
+ 
+/**
+ * Flex grid thing
+ */
+
+// Total columns
+$columns: 12;
+
+// A container
+@mixin flex-container(
+  $dir: row,
+  $horiz: flex-start,
+  $vert: flex-start,
+  $gutter: 0px
+){
+  // Constants
+  display: flex;
+  // Vars
+  flex-direction: $dir;
+  justify-content: $horiz;
+  align-items: $vert;
+  
+  > * {
+    margin: $gutter;
+  }
+}
+
+@mixin flex-part(
+  $horiz: flex-start,
+  $vert: flex-start,
+  $col: auto,
+  $padding: 8px
+){
+  justify-self: $horiz;
+  align-self: $vert;
+  
+  @if $col == 'auto' {
+    width: auto;
+  } @else {
+    @if inRange(1, $columns, $col) {
+      width: $col;
+    }
+  }
+}
+
+@mixin jumbotron {
+  height: 100vh;
+  width: 100%;
+}
