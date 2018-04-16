@@ -1,17 +1,3 @@
-// Check if a number is
-// in a range
-@function inRange($min, $max, $val) {
-  $_out: false;
-  
-  @for $i from $min through $max {
-    @if $val == $i {
-      $_out: true;
-    }
-  }
-  
-  @return $_out;
-}
- 
 /**
  * Flex grid thing
  */
@@ -32,7 +18,7 @@ $columns: 12;
   flex-direction: $dir;
   justify-content: $horiz;
   align-items: $vert;
-  
+
   > * {
     margin: $gutter;
   }
@@ -41,17 +27,23 @@ $columns: 12;
 @mixin flex-part(
   $horiz: flex-start,
   $vert: flex-start,
-  $col: auto,
+  $col: 'auto',
   $padding: 8px
 ){
   justify-self: $horiz;
   align-self: $vert;
-  
+  padding: $padding;
+
   @if $col == 'auto' {
-    width: auto;
+    flex-grow: 0;
+    flex-shrink: 1;
+    flex-basis: auto;
   } @else {
     @if inRange(1, $columns, $col) {
-      width: $col;
+      max-width: (100% / $columns) * $col;
+      flex-grow: 0;
+      flex-shrink: 0;
+      flex-basis: (100% / $columns) * $col;
     }
   }
 }

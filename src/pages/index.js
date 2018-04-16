@@ -1,5 +1,9 @@
 import Home from './Home'
+
 import FellasClub from './FellasClub'
+
+import Experiments from './Experiments'
+import experiments from './experiments'
 
 const pages = [
   {
@@ -17,7 +21,19 @@ const pages = [
     name: 'fellasclub',
     meta: {
       title: 'F E L L A \' S   C L U B',
-      name: 'fella\'s club'
+      name: 'Fella\'s club',
+      color: 'red'
+    }
+  },
+  {
+    path: '/experiments',
+    component: Experiments,
+    name: 'experiments',
+    children: experiments,
+    meta: {
+      title: 'Experiments',
+      name: 'Experiments',
+      color: 'blue'
     }
   }
 ]

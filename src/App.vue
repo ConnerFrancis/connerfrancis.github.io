@@ -7,7 +7,7 @@
 </template>
 
 <script>
-  import mh       from '@/services/mathhelper'
+  import mh    from '@/services/mathhelper'
   import pages from '@/pages'
 
   export default {
