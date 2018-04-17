@@ -3,7 +3,7 @@
   <div id="home" @mousemove="setMouseCoords">
 
     <div class="left">
-      <h1 class="title" @click="genTitle()">conner's {{ title }}</h1>
+      <!--<h1 class="title" @click="genTitle()">conner's {{ title }}</h1>-->
       <div class="pages">
           <router-link
             v-for="page in pages"
@@ -12,13 +12,12 @@
             :to="page.path"
             :content="page.meta.name"
             @click="test"
-          >??<span>!!</span></router-link>
+          ><sotc :colorActive="page.meta.color">{{ page.meta.name }}</sotc></router-link>
       </div>
-      <sotc>henlo</sotc>
     </div>
 
     <div class="right">
-      <follow-face ref="face" :pageX="pageX" :pageY="pageY" :factor="10"></follow-face>
+      <follow-face ref="face" :pageX="pageX" :pageY="pageY" :factor="15"></follow-face>
     </div>
   </div>
 
@@ -87,55 +86,24 @@
     @include flex-container;
     @include jumbotron;
     /* Colors */
-    background-color: $grey-lightest;
+    background-color: $black;
+    color: $white;
 
     .left {
       @include jumbotron;
-      @include flex-container($dir: column, $horiz: flex-end, $vert: flex-end);
-      @include flex-part($padding: 152px);
+      @include flex-container($dir: column, $horiz: flex-end, $vert: flex-start);
+      @include flex-part($padding: 0 0 128px 64px);
 
-      .title {
-        margin: 0 0 64px 0;
-        font-size: 1.5em;
-        cursor: pointer;
-        display: none;
-      }
       .pages {
         /* Display */
         @include flex-container($dir: column)
-        @include flex-part;
+        @include flex-part($col: 12, $enforce-width: true);
         /* Font */
         font-size: 4em;
-        font-weight: bold;
-        color: $text;
 
         a {
+          @include heavy-underline;
           text-decoration: none;
-          margin: 32px 0 0 0;
-          overflow: hidden;
-          width: 100%;
-          padding: 0;
-
-          span {
-            /* Position */
-            position: relative;
-            top: 0;
-            left: -50%;
-            bottom: 0;
-            width: 0px;
-            height: 0;
-            background-color: blue;
-            white-space: nowrap;
-            overflow: hidden;
-          }
-
-          &:hover span {
-            visibility: visible;
-            left: -50%;
-            transition: left 0.2s ease;
-            width: 100%;
-            background-color: red;
-          }
         }
       }
     }

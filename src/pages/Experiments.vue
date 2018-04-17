@@ -9,7 +9,9 @@
         :to="{ name: page.name }"
       >{{ page.meta.name }}</router-link>
     </div>
-    <router-view></router-view>
+    <div class="single">
+      <router-view></router-view>
+    </div>
   </div>
 
 </template>
@@ -33,8 +35,13 @@
 
   #experiments {
     /* Display */
-    @include flex-container;
+    @include flex-container($dir: column);
     @include jumbotron;
+
+    .single {
+      @include flex-part($col: 12);
+      @include jumbotron;
+    }
   }
 
 </style>

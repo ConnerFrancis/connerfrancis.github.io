@@ -1,0 +1,10 @@
+@mixin heavy-underline {
+
+  // TODO
+  &::after {
+    position: relative;
+    height: 8px;
+    width: 100%;
+    background-color: blue;
+  }
+}

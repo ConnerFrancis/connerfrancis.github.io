@@ -38,7 +38,9 @@
   #follows-you {
     /* Display */
     @include flex-container($horiz: center, $vert: center);
+    @include flex-part($col: 12);
     @include jumbotron;
+    background-color: $black;
   }
 
 </style>

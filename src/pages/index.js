@@ -1,3 +1,5 @@
+import style from '@/services/scssjson'
+
 import Home from './Home'
 
 import FellasClub from './FellasClub'
@@ -33,7 +35,7 @@ const pages = [
     meta: {
       title: 'Experiments',
       name: 'Experiments',
-      color: 'blue'
+      color: style.cyan
     }
   }
 ]

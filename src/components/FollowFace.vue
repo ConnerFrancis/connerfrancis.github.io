@@ -1,7 +1,7 @@
 <template>
 
   <div class="follow-face">
-    <div class="eyes" :style="{ width: scale(5) }">
+    <div class="eyes" :style="{ width: scale(3) }">
       <div class="eye" ref="eyeLeft" :style="{ transform: rotateLeft, width: scale(), height: scale() }">
         <div class="pupil" :style="{ width: scale(0.4), height: scale(0.4) }"></div>
       </div>
@@ -110,7 +110,7 @@
         height: $eye-size;
         /* Border */
         border-radius: 50%;
-        border: 2px solid $grey-lightest;
+        border: 1px solid white;
         /* Colors */
         background-color: white;
         /* Display */
@@ -122,7 +122,7 @@
           height: $eye-size / 3;
           border-radius: 50%;
           /* Colors */
-          background-color: $grey-darkest;
+          background-color: $black;
         }
       }
     }

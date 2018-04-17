@@ -1,10 +1,10 @@
 <template>
 
   <div class="slide-over-text-color" @mouseenter="toggleSlideActive" @mouseleave="toggleSlideActive">
-    <div class="slot one" :class="{ active: isSlideActive, disabled: !isSlideActive }">
+    <div class="slot one" :style="{ color: colorDisabled }">
       <slot></slot>
     </div>
-    <div class="slot two" :class="{ active: isSlideActive, disabled: !isSlideActive }">
+    <div class="slot two" :style="{ color: colorActive }" :class="{ disabled: !isSlideActive }">
       <slot></slot>
     </div>
   </div>
@@ -15,6 +15,22 @@
 
   export default {
     name: 'SlideOverTextColor',
+
+    props: {
+      colorDisabled: {
+        type: String,
+        default: ''
+      },
+      colorActive: {
+        type: String,
+        default: ''
+      },
+
+      animationTime: {
+        type: String,
+        default: '3s'
+      }
+    },
 
     data () {
       return {
@@ -34,32 +50,24 @@
 <style lang="scss" scoped>
 
   .slide-over-text-color {
-    @include flex-container($dir: row);
+    @include flex-container($dir: column);
     position: relative;
     width: auto;
 
     .slot {
-      position: relative;
-      top: 0;
-      left: 0;
-
-      &.one {
-        background-color: blue;
-
-        &.active {
-          left: 50%;
-        }
-      }
 
       &.two {
-        background-color: red;
+        color: red;
         overflow: hidden;
+        white-space: nowrap;
         width: 100%;
-        transition: width 1s ease;
+        margin-top: -1.5em;
+        transition: width 0.5s ease;
 
         &.disabled {
           width: 0;
-          transition: width 1s ease;
+          margin-top: -1.5em;
+          transition: width 0.5s ease;
         }
       }
     }
