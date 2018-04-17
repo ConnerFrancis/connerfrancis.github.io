@@ -29,19 +29,11 @@ $columns: 12;
   $vert: flex-start,
   $col: 'auto',
   $padding: 8px,
-  $enforce-width: false,
-  $full-height: false
+  $enforce-width: false
 ){
   justify-self: $horiz;
   align-self: $vert;
   padding: $padding;
-
-  $ew: $enforce-width !default;
-  $fh: $full-height !default;
-
-  @if $fh == true {
-    height: 100vh;
-  }
 
   @if $col == 'auto' {
     flex-grow: 0;
@@ -54,7 +46,7 @@ $columns: 12;
       flex-shrink: 0;
       flex-basis: (100% / $columns) * $col;
 
-      @if $ew == true {
+      @if $enforce-width == true {
         width: (100% / $columns) * $col;
       }
     }
@@ -62,6 +54,6 @@ $columns: 12;
 }
 
 @mixin jumbotron {
-  $ew: true;
-  $fh: true;
+  justify-self: stretch;
+  align-self: stretch;
 }

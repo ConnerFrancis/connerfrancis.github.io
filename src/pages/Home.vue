@@ -84,6 +84,7 @@
   #home {
     /* Display */
     @include flex-container;
+    @include flex-part;
     @include jumbotron;
     /* Colors */
     background-color: $black;
@@ -109,9 +110,9 @@
     }
 
     .right {
-      @include jumbotron;
       @include flex-container($horiz: flex-end, $vert: flex-end);
       @include flex-part($padding: 0 64px 128px 0);
+      @include jumbotron;
     }
   }
 

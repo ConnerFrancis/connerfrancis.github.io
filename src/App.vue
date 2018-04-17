@@ -28,15 +28,14 @@
   #app {
     /* Display */
     @include flex-container;
+    @include jumbotron;
+    background-color: red;
+    height: 100vh;
+    width: 100vw;
     /* Font */
     -webkit-font-smoothing: antialiased;
     -moz-osx-font-smoothing: grayscale;
     text-align: center;
-    /* Size */
-    min-width: 100vw;
-    min-height: 100vh;
-    margin: 0;
-    padding: 0;
   }
 
 </style>
