@@ -25,8 +25,8 @@ $columns: 12;
 }
 
 @mixin flex-part(
-  $horiz: flex-start,
-  $vert: flex-start,
+  $horiz: 'auto',
+  $vert: 'auto',
   $col: 'auto',
   $padding: 8px,
   $enforce-width: false
@@ -36,7 +36,7 @@ $columns: 12;
   padding: $padding;
 
   @if $col == 'auto' {
-    flex-grow: 0;
+    flex-grow: 1;
     flex-shrink: 1;
     flex-basis: auto;
   } @else {

@@ -1,14 +1,31 @@
 <template>
 
   <div class="follow-face">
-    <div class="eyes" :style="{ width: scale(3) }">
-      <div class="eye" ref="eyeLeft" :style="{ transform: rotateLeft, width: scale(), height: scale() }">
-        <div class="pupil" :style="{ width: scale(0.4), height: scale(0.4) }"></div>
+    
+    <div class="eyes" :style="{ width: scale(3), height: scale() }">
+      
+      <div class="eye-container" :style="{ width: scale(), height: eyesHeight, opacity: eyesOpacity, transition: eyesTransition }">
+        
+        <div class="eye" ref="eyeLeft" :style="{ transform: rotateLeft, width: scale(), height: scale() }">
+          
+          <div class="pupil" :style="{ width: scale(0.4), height: scale(0.4) }"></div>
+        
+        </div>
+      
       </div>
-      <div class="eye" ref="eyeRight" :style="{ transform: rotateRight, width: scale(), height: scale() }">
-        <div class="pupil" :style="{ width: scale(0.4), height: scale(0.4) }"></div>
+      
+      <div class="eye-container" :style="{ width: scale(), height: eyesHeight, opacity: eyesOpacity, transition: eyesTransition }">
+      
+        <div class="eye" ref="eyeRight" :style="{ transform: rotateRight, width: scale(), height: scale() }">
+          
+          <div class="pupil" :style="{ width: scale(0.4), height: scale(0.4) }"></div>
+          
+        </div>
+        
       </div>
+        
     </div>
+    
     <div class="nose" v-if="showNose" :style="{ width: scale(), height: scale() }"></div>
     <div class="mouth" v-if="showMouth" :style="{ width: scale(3), height: scale(), marginTop: 0, borderWidth: scale(0.4) }">
       <div class="corner" :style="{ width: scale(0.4), height: scale(0.4), left: '-' + scale(0.4), top: '-' + scale(0.2) }"></div>
@@ -24,6 +41,10 @@
     name: 'FollowFace',
 
     props: {
+      // Visibility anim
+      visibleToggle: {
+        default: null
+      },
       // Mouse coords
       pageX: Number,
       pageY: Number,
@@ -40,6 +61,13 @@
       },
       showMouth: {
         default: false
+      },
+      // Eyenformation lol
+      eyeLidColor: {
+        default: 'black'
+      },
+      eyesClosed: {
+        default: true
       }
     },
 
@@ -63,6 +91,21 @@
 
       scaleComputed () {
         return this.baseScale * this.factor
+      },
+      
+      eyesHeight () {
+        if(this.eyesClosed) {
+          return 0
+        } else if(!this.eyesClosed) {
+          return this.scale()
+        }
+      },
+      eyesOpacity () {
+        if(this.eyesClosed) {
+          return 0
+        } else if(!this.eyesClosed) {
+          return 1
+        }
       }
     },
 
@@ -101,28 +144,42 @@
     @include flex-container($dir: column, $horiz: center, $vert: center);
 
     .eyes {
-      @include flex-container($dir: row, $horiz: space-around);
+      @include flex-container($dir: row, $horiz: space-around, $vert: center);
       width: $eye-size * 3;
-
-      .eye {
-        /* Size */
-        width: $eye-size;
-        height: $eye-size;
-        /* Border */
-        border-radius: 50%;
-        border: 1px solid white;
-        /* Colors */
-        background-color: white;
-        /* Display */
-        @include flex-container($horiz: center);
-
-        .pupil {
+      
+      .eye-container {
+        @include flex-container($dir: column, $horiz: center, $vert: center);
+        overflow: hidden;
+        border-radius: 150% / 50%;
+        
+        transition: height 0.15s ease, opacity 0.25s ease;
+        
+        &.closed {
+          height: 0;
+        }
+  
+        .eye {
           /* Size */
-          width: $eye-size / 3;
-          height: $eye-size / 3;
+          width: $eye-size;
+          height: $eye-size;
+          /* Border */
           border-radius: 50%;
+          border: 1px solid white;
           /* Colors */
-          background-color: $black;
+          background-color: white;
+          /* Display */
+          @include flex-container($horiz: center);
+          flex-grow: 0;
+          flex-shrink: 0;
+  
+          .pupil {
+            /* Size */
+            width: $eye-size / 3;
+            height: $eye-size / 3;
+            border-radius: 50%;
+            /* Colors */
+            background-color: $black;
+          }
         }
       }
     }

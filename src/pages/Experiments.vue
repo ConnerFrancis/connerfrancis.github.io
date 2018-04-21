@@ -1,13 +1,9 @@
 <template>
 
   <div id="experiments">
-    <p>leave</p>
-    <div class="pages">
-      <router-link
-        v-for="page in experiments"
-        :key="page.name"
-        :to="{ name: page.name }"
-      >{{ page.meta.name }}</router-link>
+    <div class="navigation">
+      <router-link to="/">home</router-link>
+      <router-link to="/experiments">experiments</router-link>
     </div>
     <div class="single">
       <router-view></router-view>
@@ -17,16 +13,9 @@
 </template>
 
 <script>
-  import experiments from './experiments'
 
   export default {
-    name: 'Experiments',
-
-    data () {
-      return {
-        experiments
-      }
-    }
+    name: 'Experiments'
   }
 
 </script>
@@ -36,11 +25,18 @@
   #experiments {
     /* Display */
     @include flex-container($dir: column);
+    @include flex-part;
     @include jumbotron;
 
     .single {
-      @include flex-part($col: 12);
+      @include flex-container;
+      @include flex-part($padding: 0);
       @include jumbotron;
+      
+      > div {
+        @include flex-part;
+        @include jumbotron;
+      }
     }
   }
 

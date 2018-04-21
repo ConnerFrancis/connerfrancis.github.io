@@ -1,7 +1,7 @@
 <template>
 
-  <div id="follows-you" @mousemove="setMouseCoords">
-    <follow-face ref="face" :pageX="pageX" :pageY="pageY" factor="4.5" showNose="true" showMouth="true"></follow-face>
+  <div id="follows-you" @mousemove="setMouseCoords" @mouseenter="eyesClosed = false" @mouseleave="eyesClosed = true">
+    <follow-face :eyesClosed="eyesClosed" ref="face" :pageX="pageX" :pageY="pageY" factor="10"></follow-face>
   </div>
 
 </template>
@@ -19,7 +19,8 @@
     data () {
       return {
         pageX: 0,
-        pageY: 0
+        pageY: 0,
+        eyesClosed: true
       }
     },
 
@@ -41,6 +42,16 @@
     @include flex-part($col: 12);
     @include jumbotron;
     background-color: $black;
+    
+    .visible {
+      opacity: 1;
+      transition: opacity 0.5s ease;
+    }
+    
+    //.hidden {
+    //  opacity: 0;
+    //  transition: opacity 0.5s ease;
+    //}
   }
 
 </style>

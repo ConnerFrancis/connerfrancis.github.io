@@ -1,6 +1,6 @@
 <template>
 
-  <div id="home" @mousemove="setMouseCoords">
+  <div id="home" @mousemove="setMouseCoords" @mouseleave="eyesVisible = false" @mouseenter="eyesVisible = true">
 
     <div class="left">
       <!--<h1 class="title" @click="genTitle()">conner's {{ title }}</h1>-->
@@ -12,12 +12,12 @@
             :to="page.path"
             :content="page.meta.name"
             @click="test"
-          ><sotc :colorActive="page.meta.color">{{ page.meta.name }}</sotc></router-link>
+          ><sotc>{{ page.meta.name }}</sotc></router-link>
       </div>
     </div>
 
     <div class="right">
-      <follow-face ref="face" :pageX="pageX" :pageY="pageY" :factor="15"></follow-face>
+      <follow-face :eyesClosed="!eyesVisible" ref="face" :pageX="pageX" :pageY="pageY" :factor="10"></follow-face>
     </div>
   </div>
 
@@ -50,7 +50,8 @@
         title: '',
         lastTitle: '',
         pageX: 0,
-        pageY: 0
+        pageY: 0,
+        eyesVisible: false
       }
     },
 
@@ -83,36 +84,46 @@
 
   #home {
     /* Display */
-    @include flex-container;
-    @include flex-part;
+    @include flex-container($vert: flex-end);
+    @include flex-part($col: 12);
     @include jumbotron;
     /* Colors */
     background-color: $black;
-    color: $white;
+    color: $text-white-light;
 
     .left {
-      @include jumbotron;
-      @include flex-container($dir: column, $horiz: flex-end, $vert: flex-start);
-      @include flex-part($padding: 0 0 128px 64px);
+      @include flex-container($dir: column, $horiz: flex-end, $vert: flex-end);
+      @include flex-part($padding: 0 0 64px 64px, $col: 6);
 
       .pages {
         /* Display */
         @include flex-container($dir: column)
         @include flex-part($col: 12, $enforce-width: true);
         /* Font */
-        font-size: 4em;
+        font-size: 2.75em;
 
         a {
           @include heavy-underline;
           text-decoration: none;
+          font-family: $font-accent;
         }
       }
     }
 
     .right {
       @include flex-container($horiz: flex-end, $vert: flex-end);
-      @include flex-part($padding: 0 64px 128px 0);
+      @include flex-part($padding: 0 64px 64px 0, $col: 6);
       @include jumbotron;
+    }
+    
+    .visible {
+      opacity: 1;
+      transition: opacity 0.5s ease;
+    }
+    
+    .hidden {
+      opacity: 0;
+      transition: opacity 0.5s ease;
     }
   }
 

@@ -57,7 +57,7 @@
     .slot {
 
       &.two {
-        color: red;
+        color: $text-white;
         overflow: hidden;
         white-space: nowrap;
         width: 100%;
