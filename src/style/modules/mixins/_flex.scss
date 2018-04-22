@@ -14,6 +14,7 @@ $columns: 12;
 ){
   // Constants
   display: flex;
+  flex-wrap: wrap;
   // Vars
   flex-direction: $dir;
   justify-content: $horiz;

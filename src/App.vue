@@ -35,8 +35,10 @@
     -webkit-font-smoothing: antialiased;
     -moz-osx-font-smoothing: grayscale;
     text-align: center;
-    
+
     .router-view {
+      @include flex-part;
+      @include jumbotron;
       background-color: $grey-lightest;
     }
   }

@@ -30,22 +30,11 @@
 
 <style lang="scss" scoped>
 
-  #follows-you {
+  #list {
     /* Display */
-    @include flex-container($horiz: center, $vert: center);
+    @include flex-container($dir: column);
     @include flex-part($col: 12);
     @include jumbotron;
-    background-color: $black;
-    
-    .visible {
-      opacity: 1;
-      transition: opacity 0.5s ease;
-    }
-    
-    //.hidden {
-    //  opacity: 0;
-    //  transition: opacity 0.5s ease;
-    //}
   }
 
 </style>

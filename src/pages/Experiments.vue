@@ -5,9 +5,8 @@
       <router-link to="/">home</router-link>
       <router-link to="/experiments">experiments</router-link>
     </div>
-    <div class="single">
-      <router-view></router-view>
-    </div>
+
+    <router-view class="single"></router-view>
   </div>
 
 </template>
@@ -25,18 +24,13 @@
   #experiments {
     /* Display */
     @include flex-container($dir: column);
-    @include flex-part;
+    @include flex-part($padding: 32px);
     @include jumbotron;
 
     .single {
-      @include flex-container;
+      @include flex-container($horiz: center, $vert: center);
       @include flex-part($padding: 0);
       @include jumbotron;
-      
-      > div {
-        @include flex-part;
-        @include jumbotron;
-      }
     }
   }
 
