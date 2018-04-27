@@ -152,10 +152,11 @@
         overflow: hidden;
         border-radius: 150% / 50%;
 
-        transition: height 0.15s ease, opacity 0.25s ease;
+        transition: height 0.25s ease, opacity 0.35s ease;
 
         &.closed {
           height: 0;
+          transition: height 0.35s ease, opacity 0.25s ease;
         }
 
         .eye {

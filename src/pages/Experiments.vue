@@ -1,20 +1,25 @@
 <template>
 
-  <div id="experiments">
-    <div class="navigation">
-      <router-link to="/">home</router-link>
-      <router-link to="/experiments">experiments</router-link>
+  <div id="experiments-wrapper">
+    
+    <div id="experiments">
+      <app-header></app-header>
+  
+      <router-view class="single"></router-view>
     </div>
-
-    <router-view class="single"></router-view>
   </div>
 
 </template>
 
 <script>
+  import AppHeader from '@/components/AppHeader'
 
   export default {
-    name: 'Experiments'
+    name: 'Experiments',
+    
+    components: {
+      'app-header': AppHeader
+    }
   }
 
 </script>
@@ -26,7 +31,9 @@
     @include flex-container($dir: column);
     @include flex-part($padding: 32px);
     @include jumbotron;
-
+    margin: 32px;
+    background-color: $white;
+    
     .single {
       @include flex-container($horiz: center, $vert: center);
       @include flex-part($padding: 0);

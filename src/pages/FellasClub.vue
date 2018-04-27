@@ -1,9 +1,14 @@
 <template>
 
   <div id="fellasclub">
-    <div class="header">
-      <router-link class="router-link" to="/">back to NORMIE LAND</router-link>
-      <h1 class="title">fella's club</h1>
+    <div class="header-main card">
+      <div class="header">
+        <router-link class="router-link" to="/">Home</router-link>
+        <h1 class="title-main"><h1>fella's club</h1></h1>
+      </div>
+      <div class="inner">
+        pls
+      </div>
     </div>
     <div class="content">
       <h1>Fella's Club</h1>
@@ -23,58 +28,96 @@
 
 <style lang="scss" scoped>
 
-  #fellasclub {
-    @include flex-container;
-    @include flex-part($padding: 0);
+  @keyframes title-main-rotate {
+    0% {
+      transform: rotate(0.01turn);
+    }
+    100% {
+      transform: rotate(0.04turn);
+    }
+  }
+  
+  @keyframes title-main-size {
+    0% {
+      transform: scale(0.8);
+    }
+    100% {
+      transform: scale(1);
+    }
+  }
 
+  #fellasclub {
+    @include flex-container($horiz: center);
+    @include flex-part($padding: 16px);
+    background-color: $cyan;
+    font-size: 13px;
+    
+    .card {
+      @include flex-container($gutter: 4px);
+      @include flex-part($padding: 3px 4px);
+      /* Border */
+      border: 2px solid;
+      border-bottom-color: #535353;
+      border-right-color: #535353;
+      border-left-color: #dbdbdb;
+      border-top-color: #dbdbdb;
+      /* Size */
+      //padding: 2px 4px;
+      margin: 0;
+      /* Colors */
+      background-color: #bfbfbf;
+      /* Shadow */
+      //box-shadow: 4px 4px 0 darken(saturate($cyan, 4%), 4%);
+    }
+    
     .header {
-      @include flex-container($horiz: space-around);
-      @include flex-part($col: 12, $padding: 13px);
+      @include flex-container;
+      @include flex-part($col: 12, $padding: 1px 4px)
+      /* Colors */
+      background-color: #808080;
+      color: #dbdbdb;
+    }
+    
+    .inner {
+      @include flex-container;
+      @include flex-part($padding: 1px 4px);
+      /* Colors */
+      background-color: $white;
+      /* Border */
+      border: 2px solid;
+      border-bottom-color: #dbdbdb;
+      border-right-color: #dbdbdb;
+      border-left-color: #535353;
+      border-top-color: #535353;
+    }
+
+    .header-main {
+      @include flex-container($horiz: space-between, $gutter: 2px);
+      @include flex-part($col: 11, $padding: 3px 4px);
       /* Pos/size */
       width: 100%;
       max-height: 100px;
       position: fixed;
-      /* Colors */
-      background-color: $grey-lighter;
-      /* Border */
-      border: 3px solid $grey;
-      box-shadow: 0 3px 0 $grey-darker;
 
-      .router-link {
-        background-color: rgba(100,255,255,0.7);
-        transition: background-color 0.5s linear, color 10s ease;
-        font-size: 0.75em;
-
-        &::before {
-          content: ':(';
-          font-size: 2em;
-          color: blue;
-        }
-
-        &:hover {
-          background-color: red;
-          color: $white;
-          transition: background-color 3s ease-in, color 3s ease-out;
-
-          &::before {
-            content: '';
-          }
-
-          &::after {
-            content: ':(';
-            font-size: 2em;
-            color: blue;
-          }
-        }
-      }
-
-      .title {
+      .title-main {
+        /* Font */
         font-weight: bold;
-        color: rgb(215,50,250);
+        font-size: 1.5em;
+        /* Position */
+        position: absolute;
+        right: 0;
+        top: -0.5em;
+        color: rgb(225,70,255);
         transform: rotate(0.02turn);
-        font-size: 4em;
-        text-shadow: 5px 5px darken(rgb(215,50,250), 50%);
+        text-shadow: 0.1em 0.1em darken(rgb(215,50,250), 50%);
         text-decoration: underline;
+        /* Animation */
+        animation: 5s alternate linear infinite title-main-size;
+        
+        h1 {
+          /* Animation */
+          animation: 3.5s alternate linear infinite title-main-rotate;
+        }
       }
     }
 

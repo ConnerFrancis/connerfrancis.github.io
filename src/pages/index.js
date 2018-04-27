@@ -2,6 +2,8 @@ import style from '@/services/scssjson'
 
 import Home from './Home'
 
+import HomeOld from './HomeOld'
+
 import FellasClub from './FellasClub'
 
 import Experiments from './Experiments'
@@ -11,10 +13,19 @@ const pages = [
   {
     path: '/',
     component: Home,
-    name: 'home',
+    name: 'Home',
+    meta: {
+      title: 'the cobbler experience',
+      name: 'Home'
+    }
+  },
+  {
+    path: '/homeold',
+    component: HomeOld,
+    name: 'HomeOld',
     meta: {
       title: 'conner\'s dungeon',
-      name: 'home'
+      name: 'HomeOld'
     }
   },
   {
