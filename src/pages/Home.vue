@@ -48,10 +48,13 @@
         title: 'enabled javascript, dork',
         lastTitle: '',
         titles: [
-          'dungeon',
+          'ravine',
           'grotto',
           'cave',
-          'hovel'
+          'cavern',
+          'hovel',
+          'shelter',
+          'shack'
         ]
       }
     },
@@ -88,8 +91,8 @@
       background-color: white;
 
       .left {
-        @include flex-container($vert: center);
-        @include flex-part($col: 6, $padding: 96px);
+        @include flex-container($vert: center, $horiz: center);
+        @include flex-part($col: 6, $padding: 0);
         @include jumbotron;
         /* Colors */
         background-color: $grey-darkest;
@@ -97,11 +100,11 @@
 
         .title {
           @include flex-container($dir: column);
-          @include flex-part;
           /* Font */
           font-family: $font-main;
-          font-size: 6em;
+          font-size: 5rem;
           text-align: left;
+          line-height: 1;
           /* Misc */
           cursor: pointer;
         }

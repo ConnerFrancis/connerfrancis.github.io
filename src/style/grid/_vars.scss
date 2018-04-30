@@ -1,0 +1,32 @@
+/**
+ * Vars
+ */
+ 
+// All the different
+// breakpoints you want
+$breakpoints: (
+    sm: 768px,
+    md: 992px,
+    lg: 1200px
+);
+
+// The factor to use on screen sizes smaller than
+// the first break-point
+$cell-factor-smaller-than-first-breakpoint: 16;
+
+// All the different
+// cell factors you want;
+// values *must* match the
+// breakpoint keys to work
+$cell-factors: (
+    sm: 16,
+    md: 16,
+    lg: 16
+);
+
+// The font scale sizes
+// If the base font size in 16px, then a
+// font scale of 2 would be 32px in size.
+$base-font-size: 16px;
+$header-font-scale: 2;
+$paragraph-font-scale: 1;

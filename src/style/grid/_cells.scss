@@ -1,0 +1,38 @@
+/**
+ * Cell size
+ */
+
+// Setup the smallest screen size
+// breakpoint cell size
+$breakpoint-keys: map-keys($breakpoints);
+$first-breakpoint-key: nth($breakpoint-keys, 1);
+@media only all and (max-width: map-get($breakpoints, $first-breakpoint-key)) {
+  body {
+    font-size: calc(100vw / $cell-factor-smaller-than-first-breakpoint);
+  }
+}
+
+// Iterate through the breakpoints,
+// set the cell size to the cell-factor of the same breakpoint label
+@each $key, $item in $breakpoints {
+  @media only all and (min-width: $item) {
+    body {
+      font-size: calc(100vw / map-get($cell-factors, $key));
+    }
+  }
+}
+
+/**
+ * Font-size fixes
+ */
+
+html {
+  font-size: $base-font-size;
+}
+
+h1 {
+  font-size: ($header-font-scale * 1rem);
+}
+p {
+  font-size: ($paragraph-font-scale * 1rem);
+}
