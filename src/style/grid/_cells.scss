@@ -8,16 +8,18 @@ $breakpoint-keys: map-keys($breakpoints);
 $first-breakpoint-key: nth($breakpoint-keys, 1);
 @media only all and (max-width: map-get($breakpoints, $first-breakpoint-key)) {
   body {
-    font-size: calc(100vw / $cell-factor-smaller-than-first-breakpoint);
+    font-size: calc(100vw / #{$cell-factor-smaller-than-first-breakpoint});
   }
 }
 
 // Iterate through the breakpoints,
 // set the cell size to the cell-factor of the same breakpoint label
-@each $key, $item in $breakpoints {
-  @media only all and (min-width: $item) {
+@each $key, $value in $breakpoints {
+  $cell-factor: map-get($cell-factors, $key);
+
+  @media only all and (min-width: $value) {
     body {
-      font-size: calc(100vw / map-get($cell-factors, $key));
+      font-size: calc(100vw / #{$cell-factor});
     }
   }
 }

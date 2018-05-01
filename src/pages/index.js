@@ -1,5 +1,7 @@
 import style from '@/services/scssjson'
 
+import hidden from './hidden'
+
 import Home from './Home'
 
 import HomeOld from './HomeOld'
@@ -49,6 +51,6 @@ const pages = [
       color: style.cyan
     }
   }
-]
+].concat(hidden)
 
 export default pages

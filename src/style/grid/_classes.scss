@@ -1,0 +1,31 @@
+/**
+ * Classes
+ */
+
+.container {
+  display: flex;
+  flex-wrap: wrap;
+}
+
+// Take each factor label
+@each $key, $value in $cell-factors {
+  // Create classes for each factor
+  @for $i from 1 through $value {
+    // Width
+    // > .w-lg-5
+    .w-#{quote($key)}-#{quote($i)} {
+      width: $i * 1em;
+      // TODO: make absolute with vw?
+    }
+    // Height
+    .h-#{quote($key)}-#{quote($i)} {
+      height: $i * 1em;
+      // TODO: make absolute with vh?
+    }
+  }
+}
+
+.jumbotron {
+  justify-self: stretch;
+  align-self: stretch;
+}

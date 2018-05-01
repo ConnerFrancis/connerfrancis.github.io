@@ -3,11 +3,11 @@ import GridTest from './GridTest'
 const hidden = [
   {
     path: '/gridtest',
-    component: List,
-    name: 'list',
+    component: GridTest,
+    name: 'gridtest',
     meta: {
-      title: 'List',
-      name: 'list'
+      title: 'Grid Test',
+      name: 'gridtest'
     }
   }
 ]
