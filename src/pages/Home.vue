@@ -1,16 +1,15 @@
 <template>
 
-  <div id="home">
+  <div id="home" class="col-fluid col-lg-14 col-md-15 col-sm-16 col-xs-16">
 
-    <div class="top">
-
-      <div class="left">
+      <div class="left col">
         <h1 class="title" @click="genTitle()">conner's<br/>{{ title }}</h1>
       </div>
 
-      <div class="right">
+      <div class="right col">
 
         <h1 class="title">pages</h1>
+        
         <div class="pages">
           <router-link
             v-for="page in pages"
@@ -21,8 +20,6 @@
           </div>
 
         </div>
-
-    </div>
 
   </div>
 
@@ -78,31 +75,19 @@
 <style lang="scss" scoped>
 
   #home {
-    @include flex-container;
-    @include flex-part($padding: 0);
-    @include jumbotron;
-    font-family: $font-main;
-
-    .top {
-      @include flex-container;
-      @include flex-part($padding: 72px);
-      @include jumbotron;
-      /* Colors */
-      background-color: white;
+    background-color: grey;
 
       .left {
-        @include flex-container($vert: center, $horiz: center);
-        @include flex-part($col: 6, $padding: 0);
-        @include jumbotron;
         /* Colors */
-        background-color: $grey-darkest;
         color: $white;
+        background-color: $grey-darkest;
+        /* Size */
+        padding: 1rem;
 
         .title {
-          @include flex-container($dir: column);
           /* Font */
           font-family: $font-main;
-          font-size: 5rem;
+          font-size: 5em;
           text-align: left;
           line-height: 1;
           /* Misc */
@@ -111,28 +96,22 @@
       }
 
       .right {
-        @include flex-container($dir: column);
-        @include flex-part($col: 6, $padding: 0);
-        @include jumbotron;
         /* Colors */
         background-color: $white;
         color: $grey-darkest;
+        padding: 0 1rem;
 
         .title {
           padding: 0;
         }
 
         .pages {
-          @include flex-container($dir: column);
-          @include flex-part($padding: 0);
-          @include jumbotron;
 
           a {
             text-decoration: none;
           }
         }
       }
-    }
   }
 
 </style>

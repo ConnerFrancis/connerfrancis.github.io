@@ -1,7 +1,7 @@
 <template>
 
-  <div id="app">
-    <router-view class="router-view"></router-view>
+  <div id="app" class="container jumbotron">
+    <router-view class="router-view container jumbotron"></router-view>
   </div>
 
 </template>
@@ -27,20 +27,12 @@
 
   #app {
     /* Display */
-    @include flex-container;
-    @include jumbotron;
     height: 100vh;
     width: 100vw;
     /* Font */
     -webkit-font-smoothing: antialiased;
     -moz-osx-font-smoothing: grayscale;
     text-align: center;
-
-    .router-view {
-      @include flex-part;
-      @include jumbotron;
-      background-color: $grey-lightest;
-    }
   }
 
 </style>

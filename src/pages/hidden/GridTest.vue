@@ -1,23 +1,26 @@
 <template>
 
   <div id="gridtest" class="container jumbotron pls pls-2">
-    <div class="container jumbotron cells-1">
-      <div class="w-lg-1 h-lg-1"><p>1</p></div>
-      <div class="w-lg-1 h-lg-2"><p>2</p></div>
-      <div class="w-lg-1 h-lg-3"><p>3</p></div>
-      <div class="w-lg-1 h-lg-4"><p>4</p></div>
-      <div class="w-lg-1 h-lg-5"><p>5</p></div>
-      <div class="w-lg-1 h-lg-6"><p>6</p></div>
-      <div class="w-lg-1 h-lg-7"><p>7</p></div>
-      <div class="w-lg-1 h-lg-8"><p>8</p></div>
-      <div class="w-lg-1 h-lg-9"><p>9</p></div>
-      <div class="w-lg-1 h-lg-10"><p>10</p></div>
-      <div class="w-lg-1 h-lg-11"><p>11</p></div>
-      <div class="w-lg-1 h-lg-12"><p>12</p></div>
-      <div class="w-lg-1 h-lg-13"><p>13</p></div>
-      <div class="w-lg-1 h-lg-14"><p>14</p></div>
-      <div class="w-lg-1 h-lg-15"><p>15</p></div>
-      <div class="w-lg-1 h-lg-16"><p>16</p></div>
+    <div class="container jumbotron cells-1 col-xs-12">
+      <div class=".w-xs-12 .h-xs-3">rem cells</div>
+      <div class="col-xs-12 container">
+        <div class="w-xs-1 h-xs-1"><p>1</p></div>
+        <div class="w-xs-1 h-xs-2"><p>2</p></div>
+        <div class="w-xs-1 h-xs-1"><p>1</p></div>
+        <div class="w-xs-1 h-xs-2"><p>2</p></div>
+        <div class="w-xs-1 h-xs-1"><p>1</p></div>
+        <div class="w-xs-1 h-xs-2"><p>2</p></div>
+        <div class="w-xs-1 h-xs-1"><p>1</p></div>
+        <div class="w-xs-1 h-xs-2"><p>2</p></div>
+        <div class="w-xs-1 h-xs-1"><p>1</p></div>
+        <div class="w-xs-1 h-xs-2"><p>2</p></div>
+        <div class="w-xs-1 h-xs-1"><p>1</p></div>
+        <div class="w-xs-1 h-xs-2"><p>2</p></div>
+        <div class="w-xs-1 h-xs-1"><p>1</p></div>
+        <div class="w-xs-1 h-xs-2"><p>2</p></div>
+        <div class="w-xs-1 h-xs-1"><p>1</p></div>
+        <div class="w-xs-1 h-xs-2"><p>2</p></div>
+      </div>
     </div>
   </div>
 

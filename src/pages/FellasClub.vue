@@ -4,7 +4,7 @@
     <div class="header-main card">
       <div class="header">
         <router-link class="router-link" to="/">Home</router-link>
-        <h1 class="title-main"><h1>fella's club</h1></h1>
+        <h1 class="title-main"><h1>fellas club</h1></h1>
       </div>
       <div class="inner">
         pls
