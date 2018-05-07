@@ -1,4 +1,4 @@
-@mixin heavy-underline {
+@mixin heavy-underline($color: $black) {
   position: relative;
 
   // TODO
@@ -11,6 +11,6 @@
     /* Size */
     height: 8px;
     width: 100%;
-    background-color: black;
+    background-color: $color;
   }
 }

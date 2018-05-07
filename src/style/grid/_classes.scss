@@ -69,6 +69,17 @@ $alignments: (
   }
 }
 
+// Item alignment in flex
+@each $key, $val in $alignments {
+  .be-justify-#{$key} {
+    justify-self: $val;
+  }
+
+  .be-align-#{$key} {
+    align-self: $val;
+  }
+}
+
 // Rem Cells (.w and .h)
 // =======================
 
@@ -109,16 +120,6 @@ $alignments: (
   flex-shrink: 1;
   flex-basis: auto;
   @include reset;
-
-  @each $key, $val in $alignments {
-    .justify-#{$key} {
-      justify-self: $val;
-    }
-
-    .align-#{$key} {
-      align-self: $val;
-    }
-  }
 }
 
 // Used for a full-width element
@@ -137,7 +138,7 @@ $alignments: (
   @include col;
 }
 
-// Used for full-height elements 
+// Used for full-height elements
 .fluid, .fluid-height {
   align-self: stretch;
 }
@@ -161,7 +162,7 @@ $alignments: (
 
   // Get the size after the current one
   $next-size: map-get-next($breakpoints, $label);
-  
+
   // If there is no size
   @if $next-size == false {
 
@@ -182,12 +183,12 @@ $alignments: (
       }
     }
   } @else {
-    
+
     //                                         We subtract 1 for ez breakpoints
     @media (min-width: $size) and (max-width: ($next-size - 1px)) {
-      
+
       @for $i from 1 through $col-count {
-        
+
         .col-#{$label}-#{$i} {
           @include col;
           max-width: (100% / $col-count) * $i;

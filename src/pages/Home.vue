@@ -1,21 +1,41 @@
 <template>
 
-  <div id="home" class="col-fluid col-lg-14 col-md-15 col-sm-16 col-xs-16">
+  <div id="home" class="fluid justify-end">
 
-    <div class="jumbotron container justify-between">
-      
-      <logo class="fluid"></logo>
-      
-      <div class="pages fluid container go-down align-end">
+    <div class="main jumbotron container justify-between">
+
+      <div class="logo col-8 fluid be-align-end container align-center">
+        <logo></logo>
+      </div>
+
+      <div class="pages col-4 col-xs-12 col-sm-12 fluid container go-down align-end">
         <h1>Pages</h1>
-        
+
         <router-link
-          class="router-link"
+          class="link bold"
           v-for="page in pages"
           v-show="((page.name != 'Home') && (page.name != 'HomeOld') && (page.meta.hidden != true))"
           :key="page.name"
           :to="page.path"
         >{{ page.meta.name }}</router-link>
+
+        <a
+          class="link soft"
+          v-for="link in softLinks"
+          :key="link.name"
+          :href="link.link"
+        >{{ link.name }}</a>
+
+        <div class="post be-justify-end be-align-end container">
+          <div class="col-4 justify-between container">
+            <div class="arrow-label">view post</div>
+            <div class="arrow">arrow thing</div>
+          </div>
+          <div class="col">
+            <div class="title">post title example</div>
+            <div class="snippet">blah blah blah</div>
+          </div>
+        </div>
       </div>
     </div>
 
@@ -28,7 +48,7 @@
   import mh    from '@/services/mathhelper'
 
   import SlideOverTextColor from '@/components/animators/SlideOverTextColor'
-  
+
   import Logo from '@/components/misc/Logo'
 
   export default {
@@ -53,6 +73,17 @@
           'hovel',
           'shelter',
           'shack'
+        ],
+
+        softLinks: [
+          {
+            name: 'YouTube',
+            link: 'https://www.youtube.com/thxbro79'
+          },
+          {
+            name: 'Github',
+            link: 'https://www.github.com/ConnerFrancis'
+          }
         ]
       }
     },
@@ -75,51 +106,101 @@
 
 <style lang="scss" scoped>
 
+  // EDIT
+  $gradient-start: darken(#00202f, 8%);
+  $gradient-end: darken(#001c28, 8%);
+  $home-gradient-opacity: 0.9;
+  $post-gradient-opacity: 0.2;
+
   #home {
-    background-color: $white;
-    padding: 1rem;
-    
-    > div {
-      background: grey;
-      
-      svg {
-        width: 33%;
-        margin: 0;
-        padding: 0;
+    padding: 0.75rem;
+    color: $white;
+    background-image: linear-gradient(45deg, change_color($gradient-start, $alpha: $home-gradient-opacity), change_color($gradient-end, $alpha: $home-gradient-opacity)),
+                      url("../assets/pages/home/background.jpg");
+    /*background-origin: content-box, content-box, content-box;
+    background-position: bottom, bottom, bottom;
+    background-size: cover, cover, cover;*/
+
+    .main {
+
+      .logo {
+        overflow: hidden;
+
+        svg {
+          /* Position */
+          position: relative;
+        }
       }
-      
+
       .pages {
         position: relative;
-        padding: 0 1rem;
-        
-        &::before {
-          content: '';
-          /* Position */
-          position: absolute;
-          top: 0;
-          right: 0;
-          /* Size */
-          height: 100%;
-          width: 68%;
-          /* Colors */
-          background: $white;
-        }
-        
+
         h1 {
-          z-index: 2; // ensure the title is over the ::after box
-          @include heavy-underline;
+          @include heavy-underline($color: $white);
+          /* Position */
+          //left: -1.2ch;
           /* Font */
-          font-size: 6em;
+          font-size: 4em;
           font-family: $font-main;
+          letter-spacing: 0.08em;
+          text-transform: lowercase;
           /* Size */
           margin: 0;
           padding: 0;
         }
-        
-        .router-link {
-          z-index: 2;
+
+        .link {
+          $line-width: 32px;
+          $line-spacing: 6px;
+          position: relative;
+          right: 0;
           /* Font */
           text-decoration: none;
+          font-size: 1.5em;
+          text-transform: lowercase;
+
+          transition: right 0.3s ease;
+
+          &:hover {
+            right: $line-width + $line-spacing;
+
+            transition: right 0.3s ease;
+          }
+
+          &::after {
+            content: '';
+            /* Position */
+            position: absolute;
+            top: 50%;
+            margin-left: $line-spacing;
+            /* Size */
+            width: 0;
+            height: 2px;
+            /* Color */
+            background-color: $white;
+
+            transition: width 0.3s ease;
+          }
+
+          &:hover::after {
+            width: $line-width;
+
+            transition: width 0.3s ease;
+          }
+
+          &.bold {
+            opacity: 1;
+          }
+          &.soft {
+            opacity: 0.15;
+          }
+        }
+
+        .post {
+          padding: 0.25rem;
+          width: 100%;
+          background: linear-gradient(45deg, change_color($gradient-start, $alpha: $post-gradient-opacity), change_color($gradient-end, $alpha: $post-gradient-opacity));
+          margin-top: auto;
         }
       }
     }
