@@ -1,10 +1,16 @@
 @mixin heavy-underline {
+  position: relative;
 
   // TODO
-  &::after {
-    position: relative;
+  &::before {
+    content: '';
+    /* Position */
+    position: absolute;
+    top: 2.2ex;
+    left: 0;
+    /* Size */
     height: 8px;
     width: 100%;
-    background-color: blue;
+    background-color: black;
   }
 }

@@ -86,7 +86,7 @@ $alignments: (
 
       // Used for fixed width elements
       // using the `rem` unit
-      .w-#{quote($key)}-#{quote($i)} {
+      .w-#{$key}-#{$i} {
         width: $i * 1rem;
       }
 
@@ -94,7 +94,7 @@ $alignments: (
 
       // Used for fixed height elements
       // using the `rem` unit
-      .h-#{quote($key)}-#{quote($i)} {
+      .h-#{$key}-#{$i} {
         height: $i * 1rem;
       }
     }
@@ -137,23 +137,33 @@ $alignments: (
   @include col;
 }
 
-// Used to make a column full-height of the parent element
-.col-fluid, .fluid, .fluid-height {
-  @include col;
+// Used for full-height elements 
+.fluid, .fluid-height {
   align-self: stretch;
 }
 
-
 // WARNING: Big column class creation logic ahead!
 // Take each label and size of the breakpoints
+
+// All size cols
+@for $i from 1 through $col-count {
+  .col-#{$i} {
+    @include col;
+    max-width: (100% / $col-count) * $i;
+    flex-basis: (100% / $col-count) * $i;
+    flex-grow: 0;
+    flex-shrink: 0;
+  }
+}
+
+// Specific size/breakpoint cols
 @each $label, $size in $breakpoints {
 
-  // Get the next breakpoint index
-  $next-index: index($breakpoints, $label $size) + 1;
-
-  // If the next breakpoint is not in breakpoints
-  // ^__ or, if the next index is out of the bounds of breakpoints
-  @if $next-index >= length($breakpoints) {
+  // Get the size after the current one
+  $next-size: map-get-next($breakpoints, $label);
+  
+  // If there is no size
+  @if $next-size == false {
 
     @media (min-width: $size) {
 
@@ -162,7 +172,7 @@ $alignments: (
         // Note: the `quote` function must be used
         //       with the string literal `#{}` to work here.
         //       Sometimes it really do be like that.
-        .col-#{quote($label)}-#{quote($i)} {
+        .col-#{$label}-#{$i} {
           @include col;
           max-width: (100% / $col-count) * $i;
           flex-basis: (100% / $col-count) * $i;
@@ -172,16 +182,13 @@ $alignments: (
       }
     }
   } @else {
-
-    $labels: map-keys($breakpoints);
-    $next-label: nth($labels, $next-index);
-    $next-size: map-get($breakpoints, $next-label);
-
-    @media (min-width: $size) and (max-width: ($next-size)) {
-
+    
+    //                                         We subtract 1 for ez breakpoints
+    @media (min-width: $size) and (max-width: ($next-size - 1px)) {
+      
       @for $i from 1 through $col-count {
-
-        .col-#{quote($label)}-#{quote($i)} {
+        
+        .col-#{$label}-#{$i} {
           @include col;
           max-width: (100% / $col-count) * $i;
           flex-basis: (100% / $col-count) * $i;

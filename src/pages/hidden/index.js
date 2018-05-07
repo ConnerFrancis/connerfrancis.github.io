@@ -7,7 +7,8 @@ const hidden = [
     name: 'gridtest',
     meta: {
       title: 'Grid Test',
-      name: 'gridtest'
+      name: 'gridtest',
+      hidden: true
     }
   }
 ]

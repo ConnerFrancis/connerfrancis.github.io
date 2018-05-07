@@ -1,31 +1,6 @@
 <template>
-
-  <div id="gridtest" class="container jumbotron pls pls-2">
-    <div class="container jumbotron cells-1 col-xs-12">
-      <div class="col-12">rem cells</div>
-      <div class="col-xs-12 container">
-        <div class="w-xs-1 h-xs-1"><p>1</p></div>
-        <div class="w-xs-1 h-xs-2"><p>2</p></div>
-        <div class="w-xs-1 h-xs-1"><p>1</p></div>
-        <div class="w-xs-1 h-xs-2"><p>2</p></div>
-        <div class="w-xs-1 h-xs-1"><p>1</p></div>
-        <div class="w-xs-1 h-xs-2"><p>2</p></div>
-        <div class="w-xs-1 h-xs-1"><p>1</p></div>
-        <div class="w-xs-1 h-xs-2"><p>2</p></div>
-        <div class="w-xs-1 h-xs-1"><p>1</p></div>
-        <div class="w-xs-1 h-xs-2"><p>2</p></div>
-        <div class="w-xs-1 h-xs-1"><p>1</p></div>
-        <div class="w-xs-1 h-xs-2"><p>2</p></div>
-        <div class="w-xs-1 h-xs-1"><p>1</p></div>
-        <div class="w-xs-1 h-xs-2"><p>2</p></div>
-        <div class="w-xs-1 h-xs-1"><p>1</p></div>
-        <div class="w-xs-1 h-xs-2"><p>2</p></div>
-      </div>
-      <div class="col-xs-12 container">
-        <?xml version="1.0" encoding="UTF-8" standalone="no"?>
-        <!-- Created with Inkscape (http://www.inkscape.org/) -->
-
-        <svg
+  
+          <svg
            xmlns:dc="http://purl.org/dc/elements/1.1/"
            xmlns:cc="http://creativecommons.org/ns#"
            xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#"
@@ -161,31 +136,13 @@
                sodipodi:nodetypes="sssccccsssscccscc" />
           </g>
         </svg>
-
-      </div>
-    </div>
-  </div>
-
+  
 </template>
 
 <script>
-
+  
   export default {
-    name: 'GridTest'
+    name: 'Logo'
   }
-
+  
 </script>
-
-<style lang="scss" scoped>
-
-  #gridtest {
-
-    .cells-1 {
-      div {
-        background-color: $white;
-        border: $grey-lighter 2px solid;
-      }
-    }
-  }
-
-</style>

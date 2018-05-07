@@ -2,24 +2,22 @@
 
   <div id="home" class="col-fluid col-lg-14 col-md-15 col-sm-16 col-xs-16">
 
-      <div class="left col">
-        <h1 class="title" @click="genTitle()">conner's<br/>{{ title }}</h1>
-      </div>
-
-      <div class="right col">
-
-        <h1 class="title">pages</h1>
+    <div class="jumbotron container justify-between">
+      
+      <logo class="fluid"></logo>
+      
+      <div class="pages fluid container go-down align-end">
+        <h1>Pages</h1>
         
-        <div class="pages">
-          <router-link
-            v-for="page in pages"
-            v-show="((page.name != 'Home') && (page.name != 'HomeOld'))"
-            :key="page.name"
-            :to="page.path"
-            ><sotc>{{ page.meta.name }}</sotc></router-link>
-          </div>
-
-        </div>
+        <router-link
+          class="router-link"
+          v-for="page in pages"
+          v-show="((page.name != 'Home') && (page.name != 'HomeOld') && (page.meta.hidden != true))"
+          :key="page.name"
+          :to="page.path"
+        >{{ page.meta.name }}</router-link>
+      </div>
+    </div>
 
   </div>
 
@@ -29,13 +27,16 @@
   import pages from '@/pages'
   import mh    from '@/services/mathhelper'
 
-  import SlideOverTextColor from '@/components/SlideOverTextColor'
+  import SlideOverTextColor from '@/components/animators/SlideOverTextColor'
+  
+  import Logo from '@/components/misc/Logo'
 
   export default {
     name: 'Home',
 
     components: {
-      'sotc': SlideOverTextColor
+      'sotc': SlideOverTextColor,
+      'logo': Logo
     },
 
     data () {
@@ -75,43 +76,53 @@
 <style lang="scss" scoped>
 
   #home {
-    background-color: grey;
-
-      .left {
-        /* Colors */
-        color: $white;
-        background-color: $grey-darkest;
-        /* Size */
-        padding: 1rem;
-
-        .title {
-          /* Font */
-          font-family: $font-main;
-          font-size: 5em;
-          text-align: left;
-          line-height: 1;
-          /* Misc */
-          cursor: pointer;
-        }
+    background-color: $white;
+    padding: 1rem;
+    
+    > div {
+      background: grey;
+      
+      svg {
+        width: 33%;
+        margin: 0;
+        padding: 0;
       }
-
-      .right {
-        /* Colors */
-        background-color: $white;
-        color: $grey-darkest;
+      
+      .pages {
+        position: relative;
         padding: 0 1rem;
-
-        .title {
+        
+        &::before {
+          content: '';
+          /* Position */
+          position: absolute;
+          top: 0;
+          right: 0;
+          /* Size */
+          height: 100%;
+          width: 68%;
+          /* Colors */
+          background: $white;
+        }
+        
+        h1 {
+          z-index: 2; // ensure the title is over the ::after box
+          @include heavy-underline;
+          /* Font */
+          font-size: 6em;
+          font-family: $font-main;
+          /* Size */
+          margin: 0;
           padding: 0;
         }
-
-        .pages {
-
-          a {
-            text-decoration: none;
-          }
+        
+        .router-link {
+          z-index: 2;
+          /* Font */
+          text-decoration: none;
         }
       }
+    }
   }
 
 </style>

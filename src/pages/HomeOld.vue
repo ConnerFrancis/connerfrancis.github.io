@@ -26,7 +26,7 @@
   import pages from '@/pages'
 
   import FollowFace         from '@/components/FollowFace.vue'
-  import SlideOverTextColor from '@/components/SlideOverTextColor.vue'
+  import SlideOverTextColor from '@/components/animators/SlideOverTextColor.vue'
 
   export default {
     name: 'Home',
