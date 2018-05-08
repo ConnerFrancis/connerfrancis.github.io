@@ -2,30 +2,37 @@
 
   <div id="home" class="fluid justify-end">
 
-    <div class="main row screen-height container justify-between">
+    <div class="main col-12 screen-height container justify-between">
 
-      <h1 class="big-text col-8 container be-justify-end be-align-end">
+      <h1 class="big-text col-8 container">
         Conner's<br/>website<br/>conglomerate
       </h1>
 
-      <div class="pages col-4 punch-hole fluid col-xs-12 col-sm-12 container go-up align-end">
-        
-        <router-link
-          class="link bold"
-          v-for="page in pages"
-          v-show="((page.name != 'Home') && (page.name != 'HomeOld') && (page.meta.hidden != true))"
-          :key="page.name"
-          :to="page.path"
-        >{{ page.meta.name }}</router-link>
-        <a class="link bold" @click="scrollToBlog">Blog</a>
+      <div class="pages col-4 fluid col-xs-12 col-sm-12 container align-end justify-end">
 
-        <a
-          class="link soft"
-          v-for="link in softLinks"
-          :key="link.name"
-          :href="link.link"
-        >{{ link.name }}</a>
-        
+        <div class="link-container col-12 container go-up align-end justify-end">
+          <router-link
+            class="link bold"
+            v-for="page in pages"
+            v-show="((page.name != 'Home') && (page.name != 'HomeOld') && (page.meta.hidden != true))"
+            :key="page.name"
+            :to="page.path"
+          >{{ page.meta.name }}</router-link>
+
+          <a class="link bold" @click="scrollToBlog">Blog</a>
+
+          <a
+            class="link soft"
+            v-for="link in softLinks"
+            :key="link.name"
+            :href="link.link"
+          >{{ link.name }}</a>
+        </div>
+
+        <div class="arrow-container container justify-center align-center" @click="scrollToBlog"></a>
+          <i class="arrow-down"></i>
+        </div>
+
         <!--<h1 class="be-justify-end be-align-center">Pages</h1>-->
 
         <!--<div class="post be-justify-end be-align-end container">
@@ -38,13 +45,16 @@
           </div>
         </div>-->
       </div>
-      
-      <div class="arrow-container" @click="scrollToBlog"></a>
-        <i class="arrow-down white"></i>
-      </div>
     </div>
-    
-    <div class="blog row container justify-around">
+
+    <div class="blog col-12 container justify-around">
+      <div class="post col-4 col-xs-12 col-sm-12   container">
+        <img class="thumbnail col-12" src="../assets/pages/home/background.jpg" />
+        <div class="meta col-12 container go-down">
+          <h5>Title of the post</h5>
+          <p>I am a real human and I do human things.</p>
+        </div>
+      </div>
       <div class="post col-4 container">
         <img class="thumbnail col-12" src="../assets/pages/home/background.jpg" />
         <div class="meta col-12 container go-down">
@@ -52,8 +62,13 @@
           <p>I am a real human and I do human things.</p>
         </div>
       </div>
-      <div class="post col-4">post</div>
-      <div class="post col-4">post</div>
+      <div class="post col-4 container">
+        <img class="thumbnail col-12" src="../assets/pages/home/background.jpg" />
+        <div class="meta col-12 container go-down">
+          <h5>Title of the post</h5>
+          <p>I am a real human and I do human things.</p>
+        </div>
+      </div>
     </div>
 
   </div>
@@ -112,7 +127,7 @@
           this.title = mh.sample(this.titles)
         }
       },
-      
+
       scrollToBlog () {
         let height = window.innerHeight;
         window.scrollTo({
@@ -140,7 +155,7 @@
 
   #home {
     /* Colors */
-    background-color: $grey-darkest;
+    background-color: $white;
     /* old, image and grad background */
     /*background-image: linear-gradient(45deg, change_color($gradient-start, $alpha: $home-gradient-opacity), change_color($gradient-end, $alpha: $home-gradient-opacity)),
                       url("../assets/pages/home/background.jpg");
@@ -152,28 +167,8 @@
     .main {
       position: relative;
       color: $white;
-      padding: 1rem 0 1rem 1rem;
-      
-      .arrow-container {
-        position: absolute;
-        cursor: pointer;
-        bottom: 18px;
-        left: calc(50% - 1.5rem);
-        height: 1rem;
-        min-width: 3rem;
-        
-        .arrow-down {
-          position: absolute;
-          bottom: 8px;
-          opacity: 0.15;
-          transition: opacity 0.3s ease-out;
-        }
-        
-        &:hover .arrow-down {
-          opacity: 1;
-          transition: opacity 0.3s ease-out;
-        }
-      }
+      background-color: $grey-darkest;
+      padding: 0 0 0 1rem;
 
       .big-text {
         /* Font */
@@ -181,73 +176,85 @@
         font-weight: 600;
         text-align: left;
         line-height: 1;
+        /* Size */
+        padding-top: 1rem;
       }
 
       .pages {
         position: relative;
         background-color: $white;
         color: $text;
-        padding: 0 0.75rem 0.75rem 0;
-        
-        &::before { backbround-color: $grey-darkest }
+        padding: 0 0 0 0;
 
-        h1 {
-          @include heavy-underline($color: $white);
-          /* Size */
-          margin: 0;
-          padding: 0;
-          line-height: 1;
+        //&::before { background-color: $grey-darkest }
+
+        .link-container {
+          padding-right: 1rem;
+
+          .link {
+            cursor: pointer;
+            position: relative;
+            right: 0;
+            /* Font */
+            text-decoration: none;
+            font-size: 1.5em;
+
+            &::before {
+              content: '';
+              /* Position */
+              position: absolute;
+              bottom: 0.25ex;
+              right: 0;
+              /* Size */
+              width: 0;
+              height: 2px;
+              /* Color */
+              background-color: $text;
+
+              transition: width 0.3s ease-in;
+            }
+
+            &:hover::before {
+              width: 100%;
+
+              transition: width 0.3s ease-out;
+            }
+
+            &.soft {
+              color: $text-less;
+              &::before { background-color: $text-less; }
+            }
+          }
         }
 
-        .link {
-          $line-spacing: 6px;
+        .arrow-container {
           cursor: pointer;
-          position: relative;
-          right: 0;
-          /* Font */
-          text-decoration: none;
-          font-size: 1.5em;
+          height: 2rem;
+          width: 100%;
 
-          &::after {
-            content: '';
-            /* Position */
-            position: absolute;
-            bottom: 0.25ex;
-            right: 0;
-            margin-left: $line-spacing;
-            /* Size */
-            width: 0;
-            height: 2px;
-            /* Color */
-            background-color: $text;
-
-            transition: width 0.3s ease-in;
+          .arrow-down {
+            opacity: 0.15;
+            transition: opacity 0.3s ease-out;
           }
 
-          &:hover::after {
-            width: 100%;
-
-            transition: width 0.3s ease-out;
-          }
-
-          &.soft {
-            color: $text-less;
-            &::after { background-color: $text-less; }
+          &:hover .arrow-down {
+            opacity: 1;
+            transition: opacity 0.3s ease-out;
           }
         }
       }
     }
-    
+
     .blog {
       min-height: 100vh;
       padding: 1rem;
-      
+
       .post {
         background-color: $grey-lightest;
-        
+
         .meta {
           padding: 0.25rem;
-          
+
           p {
             color: $text-fade;
           }
