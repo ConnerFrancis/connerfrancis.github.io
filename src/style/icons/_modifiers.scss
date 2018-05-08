@@ -1,0 +1,10 @@
+i {
+
+
+  &.white {
+    background-color: white;
+    &::before, &::after { background-color: white }
+  }
+
+
+}

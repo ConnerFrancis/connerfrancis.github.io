@@ -1,3 +1,30 @@
+@mixin before {
+  position: relative;
+  background-color: $black;
+
+  &::before {
+    content: '';
+    position: absolute;
+    background-color: $black;
+  }
+}
+
+@mixin after {
+  position: relative;
+  background-color: $black;
+
+  &::after {
+    content: '';
+    position: absolute;
+    background-color: $black;
+  }
+}
+
+@mixin before-after {
+  @include before;
+  @include after;
+}
+
 @mixin heavy-underline($color: $black) {
   position: relative;
 

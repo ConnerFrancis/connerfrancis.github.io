@@ -9,7 +9,7 @@
       </div>
 
       <div class="pages col-4 col-xs-12 col-sm-12 fluid container go-down align-end">
-        <h1>Pages</h1>
+        <h1>pages</h1>
 
         <router-link
           class="link bold"
@@ -27,13 +27,12 @@
         >{{ link.name }}</a>
 
         <div class="post be-justify-end be-align-end container">
-          <div class="col-4 justify-between container">
-            <div class="arrow-label">view post</div>
-            <div class="arrow">arrow thing</div>
-          </div>
-          <div class="col">
+          <div class="meta col fluid container align-end go-down">
             <div class="title">post title example</div>
             <div class="snippet">blah blah blah</div>
+          </div>
+          <div class="arrow-container col-1 fluid container">
+            <i class="arrow-right white"></i>
           </div>
         </div>
       </div>
@@ -107,8 +106,8 @@
 <style lang="scss" scoped>
 
   // EDIT
-  $gradient-start: darken(#00202f, 8%);
-  $gradient-end: darken(#001c28, 8%);
+  $gradient-start: darken(#007ea7, 30%);
+  $gradient-end: darken(#003249, 30%);
   $home-gradient-opacity: 0.9;
   $post-gradient-opacity: 0.2;
 
@@ -117,9 +116,11 @@
     color: $white;
     background-image: linear-gradient(45deg, change_color($gradient-start, $alpha: $home-gradient-opacity), change_color($gradient-end, $alpha: $home-gradient-opacity)),
                       url("../assets/pages/home/background.jpg");
-    /*background-origin: content-box, content-box, content-box;
-    background-position: bottom, bottom, bottom;
-    background-size: cover, cover, cover;*/
+    background-origin: border-box, border-box;
+    background-repeat: no-repeat, no-repeat;
+    background-position: bottom, bottom;
+    background-size: cover, cover;
+    text-transform: lowercase;
 
     .main {
 
@@ -137,13 +138,10 @@
 
         h1 {
           @include heavy-underline($color: $white);
-          /* Position */
-          //left: -1.2ch;
           /* Font */
           font-size: 4em;
           font-family: $font-main;
           letter-spacing: 0.08em;
-          text-transform: lowercase;
           /* Size */
           margin: 0;
           padding: 0;
@@ -157,7 +155,6 @@
           /* Font */
           text-decoration: none;
           font-size: 1.5em;
-          text-transform: lowercase;
 
           transition: right 0.3s ease;
 
@@ -197,10 +194,36 @@
         }
 
         .post {
-          padding: 0.25rem;
+          /* Size */
+          padding: 0.5rem;
           width: 100%;
-          background: linear-gradient(45deg, change_color($gradient-start, $alpha: $post-gradient-opacity), change_color($gradient-end, $alpha: $post-gradient-opacity));
+          height: 1.5rem;
           margin-top: auto;
+          /* Background */
+          background: linear-gradient(45deg, change_color($gradient-start, $alpha: $post-gradient-opacity), change_color($gradient-end, $alpha: $post-gradient-opacity));
+          /* Misc */
+          cursor: pointer;
+
+          .meta {
+            padding: 0 0.5rem 0 0;
+
+            .snippet {
+              opacity: 0.25;
+            }
+          }
+
+          .arrow-container {
+
+            .arrow-right {
+              transition: width 0.5s ease;
+              margin-bottom: 10px;
+            }
+          }
+
+          &:hover .arrow-container .arrow-right {
+            transition: width 0.5s ease;
+            width: 28px;
+          }
         }
       }
     }
