@@ -190,7 +190,7 @@
       width: $nose-size;
       height: $nose-size;
       /* Colors */
-      background-color: $blue-dark;
+      background-color: $blue;
       /* Border */
       border-radius: 50%;
     }

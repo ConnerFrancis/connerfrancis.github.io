@@ -22,24 +22,24 @@ $slate-dark:    #353c51;
 $slate:         #899AB0;
 
 // Text
-$text:          rgba(0,0,0,0.95);
+$text:      rgba(0,0,0,0.95);
+$text-fade: rgba(0,0,0,0.5);
+$text-less: rgba(0,0,0,0.25);
+
 $text-light:    rgba(0,0,0,0.85);
 $text-lighter:  rgba(0,0,0,0.70);
 $text-lightest: rgba(0,0,0,0.55);
+
 $text-white:    rgba(255,255,255,0.95);
 $text-white-light:    rgba(255,255,255,0.85);
 $text-white-lighter:  rgba(255,255,255,0.70);
 $text-white-lightest: rgba(255,255,255,0.55);
 
 // Blue
-$blue-dark: #003249;
-$blue: #007ea7;
-$blue-light: #80ced7;
-
-// Cyan
-$cyan-dark: #05668d;
-$cyan: #028090;
-$cyan-light: #00a896;
-
+$blue: #0F084B;
+$cosmic: #26408B;
+$cyan: #357266;
 // Red
-$red-dark: #420217;
+$red: #ED1C24;
+// Yellow
+$yellow: #FFF302;

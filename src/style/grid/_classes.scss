@@ -210,3 +210,8 @@ $alignments: (
   justify-self: stretch;
   align-self: stretch;
 }
+
+// Used for 100 view height elements
+.screen-height {
+  height: 100vh;
+}

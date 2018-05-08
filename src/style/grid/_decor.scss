@@ -1,0 +1,14 @@
+.punch-hole {
+  position: relative;
+  
+  &::before {
+    position: absolute;
+    content: '';
+    top: 0.25rem;
+    left: 0.25rem;
+    width: 0.25rem;
+    height: 0.25rem;
+    border-radius: 0.5rem;
+    background-color: $grey-darkest;
+  }
+}
