@@ -2,15 +2,52 @@
 
   <div id="home" class="fluid justify-end">
 
+    <!-- Main div that is full screen height -->
     <div class="main col-12 screen-height container justify-between">
+      
+      <!-- Left side -->
+      <div class="left col-9 fluid container">
+      
+        <!-- Latest post and project -->
+        <div class="heading col-12 container align-end justify-start">
+          
+          <div class="project-latest col-6 container fluid go-down justify-between">
+            <p class="text-less">Latest project</p>
+            <div>
+              <p class="container">Personal website<i class="arrow-right color-normal be-align-center"></i></p>
+              <p class="text-fade">A personal website you're viewing right now.</p>
+            </div>
+          </div>
+          
+          <div class="post-latest col-6 container fluid go-down justify-between">
+            <p class="text-white-less">Latest post</p>
+            <div>
+              <p class="text-white container">This is just a mock up website.<i class="arrow-right color-white be-align-center"></i></p>
+              <p class="text-white-fade">Maybe I'll finish it. Eventually.</p>
+            </div>
+          </div>
+          
+        </div>
+  
+        <!-- Large accent text and background image -->
+        <div class="big-text col-12 fluid container go-down justify-end">
+          <span>Conner's</span>
+          <span>website</span>
+          <span>conglomerate</span>
+        </div>
+        
+      </div>
 
-      <h1 class="big-text col-8 container">
-        Conner's<br/>website<br/>conglomerate
-      </h1>
+      <!-- Right side -->
+      <div class="pages col-3 fluid col-xs-12 col-sm-12 container justify-end align-end">
 
-      <div class="pages col-4 fluid col-xs-12 col-sm-12 container align-end justify-end">
-
-        <div class="link-container col-12 container go-up align-end justify-end">
+        <!-- Logo positioning -->
+        <div class="col-12 container align-center justify-start">
+          <logo></logo>
+        </div>
+      
+        <!-- Website links and lesser external links -->
+        <div class="link-container col-12 container go-up">
           <router-link
             class="link bold"
             v-for="page in pages"
@@ -29,24 +66,14 @@
           >{{ link.name }}</a>
         </div>
 
+        <!-- Old arrow-container thing
         <div class="arrow-container container justify-center align-center" @click="scrollToBlog"></a>
           <i class="arrow-down"></i>
-        </div>
-
-        <!--<h1 class="be-justify-end be-align-center">Pages</h1>-->
-
-        <!--<div class="post be-justify-end be-align-end container">
-          <div class="meta col fluid container align-end go-down">
-            <div class="title">post title example</div>
-            <div class="snippet">blah blah blah</div>
-          </div>
-          <div class="arrow-container col-1 fluid container">
-            <i class="arrow-right white"></i>
-          </div>
         </div>-->
       </div>
     </div>
 
+    <!-- old blog layout
     <div class="blog col-12 container justify-around">
       <div class="post col-4 col-xs-12 col-sm-12   container">
         <img class="thumbnail col-12" src="../assets/pages/home/background.jpg" />
@@ -69,7 +96,7 @@
           <p>I am a real human and I do human things.</p>
         </div>
       </div>
-    </div>
+    </div>-->
 
   </div>
 
@@ -95,7 +122,7 @@
       return {
         pages,
 
-        title: 'enabled javascript, dork',
+        title: 'title generation broke',
         lastTitle: '',
         titles: [
           'ravine',
@@ -140,6 +167,7 @@
 
     created () {
       this.genTitle()
+      document.title = 'conner\'s ' + this.title
     }
   }
 
@@ -150,8 +178,18 @@
   // EDIT
   $gradient-start: darken(#007ea7, 30%);
   $gradient-end: darken(#003249, 30%);
-  $home-gradient-opacity: 0.9;
+  $home-gradient-opacity: 0.7;
   $post-gradient-opacity: 0.2;
+  
+  // DO NOT EDIT
+  @mixin cloud-background {
+    background-image: linear-gradient(45deg, change_color($gradient-start, $alpha: $home-gradient-opacity), change_color($gradient-end, $alpha: $home-gradient-opacity)),
+                      url("../assets/pages/home/background.jpg");
+    background-origin: border-box, border-box;
+    backgorund-repeat: no-repeat, no-repeat;
+    background-position: bottom, bottom;
+    background-size: cover, cover;
+  }
 
   #home {
     /* Colors */
@@ -167,29 +205,64 @@
     .main {
       position: relative;
       color: $white;
-      background-color: $grey-darkest;
-      padding: 0 0 0 1rem;
+      padding: 0 0 0 0;
 
-      .big-text {
-        /* Font */
-        font-size: 7em;
-        font-weight: 600;
-        text-align: left;
-        line-height: 1;
-        /* Size */
-        padding-top: 1rem;
+      .left {
+        
+        .heading {
+          height: 2.25rem;
+          padding: 0;
+          margin: 0;
+          cursor: pointer;
+
+          .project-latest, .post-latest {
+            padding: 0.25rem 0 0.5rem 0.5rem;
+            
+            .arrow-right {
+              margin-left: 0.2rem;
+            }
+          }
+          
+          .project-latest {
+            background-color: $white;
+            color: $text;
+          }
+          .post-latest {
+            background-color: $grey-dark;
+            color: $text-white;
+          }
+        }
+
+        .big-text {
+          /* Font */
+          font-size: 6em;
+          color: $text-white;
+          font-weight: 600;
+          /* Colors */
+          @include cloud-background;
+          
+          span {
+            display: inline-block;
+            line-height: 1em;
+            height: 1em;
+          }
+        }
       }
 
       .pages {
         position: relative;
-        background-color: $white;
-        color: $text;
-        padding: 0 0 0 0;
-
-        //&::before { background-color: $grey-darkest }
+        background-color: $grey-darkest;
+        color: $text-white;
+        padding: 0 0 1rem 0.5rem;
+        
+        svg {
+          height: 1rem;
+          width: 1rem;
+          padding: 0;
+          margin: 0;
+        }
 
         .link-container {
-          padding-right: 1rem;
 
           .link {
             cursor: pointer;
@@ -197,32 +270,32 @@
             right: 0;
             /* Font */
             text-decoration: none;
-            font-size: 1.5em;
+            font-size: 1em;
 
             &::before {
               content: '';
               /* Position */
               position: absolute;
-              bottom: 0.25ex;
-              right: 0;
+              top: calc(50% - 2px);
+              right: calc(100% + 0.1rem);
               /* Size */
               width: 0;
               height: 2px;
               /* Color */
-              background-color: $text;
+              background-color: $text-white;
 
-              transition: width 0.3s ease-in;
+              transition: width 0.3s ease;
             }
 
             &:hover::before {
-              width: 100%;
+              width: 0.3rem;
 
-              transition: width 0.3s ease-out;
+              transition: width 0.3s ease;
             }
 
             &.soft {
-              color: $text-less;
-              &::before { background-color: $text-less; }
+              color: $text-white-less;
+              &::before { background-color: $text-white-less; }
             }
           }
         }

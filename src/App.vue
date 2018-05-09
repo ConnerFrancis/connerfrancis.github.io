@@ -32,7 +32,7 @@
     /* Font */
     -webkit-font-smoothing: antialiased;
     -moz-osx-font-smoothing: grayscale;
-    text-align: center;
+    text-align: left;
   }
 
 </style>
