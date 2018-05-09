@@ -1,6 +1,29 @@
 i {
 // =======================
 
+  &.menu {
+    cursor: pointer;
+
+    @include before-after;
+    width: 24px;
+    height: 22px;
+    border-top: 2px solid $white;
+    background-color: transparent;
+
+    &::before, &::after {
+      width: 24px;
+      height: 2px;
+      left: 0;
+      top: 7px;
+      background-color: $white
+    }
+    &::after {
+      width: 16px;
+      left: 8px;
+      top: 16px;
+    }
+  }
+
   &.arrow-right {
     @include before-after;
     width: 16px;
@@ -19,13 +42,13 @@ i {
       transform: rotate(-45deg);
     }
   }
-  
+
   &.arrow-down {
     $size: 24px;
     @include before-after;
     height: $size;
     width: $size / 8;
-    
+
     &::before, &::after {
       height: $size / 2;
       width: $size / 8;
@@ -33,7 +56,7 @@ i {
       right: -100%;
       transform: rotate(45deg);
     }
-    
+
     &::after {
       right: 100%;
       transform: rotate(-45deg);

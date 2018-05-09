@@ -4,13 +4,13 @@
 
     <!-- Main div that is full screen height -->
     <div class="main col-12 screen-height container justify-between">
-      
+
       <!-- Left side -->
       <div class="left col-9 fluid container">
-      
+
         <!-- Latest post and project -->
         <div class="heading col-12 container align-end justify-start">
-          
+
           <div class="project-latest col-6 container fluid go-down justify-between">
             <p class="text-less">Latest project</p>
             <div>
@@ -18,45 +18,41 @@
               <p class="text-fade">A personal website you're viewing right now.</p>
             </div>
           </div>
-          
+
           <div class="post-latest col-6 container fluid go-down justify-between">
             <p class="text-white-less">Latest post</p>
             <div>
               <p class="text-white container">This is just a mock up website.<i class="arrow-right color-white be-align-center"></i></p>
-              <p class="text-white-fade">Maybe I'll finish it. Eventually.</p>
+              <p class="text-white-fade">It's just a design experiment for a home page.</p>
             </div>
           </div>
-          
+
         </div>
-  
+
         <!-- Large accent text and background image -->
         <div class="big-text col-12 fluid container go-down justify-end">
-          <span>Conner's</span>
+          <img src="../assets/svg/logo.svg" />
+          <!--Conner's<br/>website<br/>conglomerate-->
+          <!--<span>Conner's</span>
           <span>website</span>
-          <span>conglomerate</span>
+          <span>conglomerate</span>-->
         </div>
-        
+
       </div>
 
       <!-- Right side -->
       <div class="pages col-3 fluid col-xs-12 col-sm-12 container justify-end align-end">
 
-        <!-- Logo positioning -->
-        <div class="col-12 container align-center justify-start">
-          <logo></logo>
+        <div class="heading col-12 be-align-start container justify-end">
+          <i class="menu"></i>
         </div>
-      
-        <!-- Website links and lesser external links -->
-        <div class="link-container col-12 container go-up">
-          <router-link
-            class="link bold"
-            v-for="page in pages"
-            v-show="((page.name != 'Home') && (page.name != 'HomeOld') && (page.meta.hidden != true))"
-            :key="page.name"
-            :to="page.path"
-          >{{ page.meta.name }}</router-link>
 
-          <a class="link bold" @click="scrollToBlog">Blog</a>
+        <!-- Logo positioning -->
+        <h3 class="text col-12 container">Conner's<br/>website<br/>conglomerate</h3>
+
+        <!-- Website links and lesser external links -->
+        <div class="link-container col-12 container go-down">
+          <!--<p class="text-underline">Pages</p>-->
 
           <a
             class="link soft"
@@ -64,6 +60,16 @@
             :key="link.name"
             :href="link.link"
           >{{ link.name }}</a>
+
+          <a class="link bold" @click="scrollToBlog">Blog</a>
+
+          <router-link
+            class="link bold"
+            v-for="page in pages"
+            v-show="((page.name != 'Home') && (page.name != 'HomeOld') && (page.meta.hidden != true))"
+            :key="page.name"
+            :to="page.path"
+          >{{ page.meta.name }}</router-link>
         </div>
 
         <!-- Old arrow-container thing
@@ -176,39 +182,33 @@
 <style lang="scss" scoped>
 
   // EDIT
-  $gradient-start: darken(#007ea7, 30%);
-  $gradient-end: darken(#003249, 30%);
+  $gradient-start: /*darken(#007ea7, 30%)*/$black;
+  $gradient-end: /*darken(#003249, 30%)*/$black;
   $home-gradient-opacity: 0.7;
   $post-gradient-opacity: 0.2;
-  
+
   // DO NOT EDIT
-  @mixin cloud-background {
+  @mixin art-background {
     background-image: linear-gradient(45deg, change_color($gradient-start, $alpha: $home-gradient-opacity), change_color($gradient-end, $alpha: $home-gradient-opacity)),
-                      url("../assets/pages/home/background.jpg");
+                      url("../assets/pages/home/background.svg");
     background-origin: border-box, border-box;
-    backgorund-repeat: no-repeat, no-repeat;
-    background-position: bottom, bottom;
+    background-repeat: no-repeat, no-repeat;
+    background-position: bottom, top;
     background-size: cover, cover;
   }
 
   #home {
     /* Colors */
     background-color: $white;
-    /* old, image and grad background */
-    /*background-image: linear-gradient(45deg, change_color($gradient-start, $alpha: $home-gradient-opacity), change_color($gradient-end, $alpha: $home-gradient-opacity)),
-                      url("../assets/pages/home/background.jpg");
-    background-origin: border-box, border-box;
-    background-repeat: no-repeat, no-repeat;
-    background-position: bottom, bottom;
-    background-size: cover, cover;*/
 
     .main {
       position: relative;
       color: $white;
       padding: 0 0 0 0;
+      @include art-background;
 
       .left {
-        
+
         .heading {
           height: 2.25rem;
           padding: 0;
@@ -217,12 +217,12 @@
 
           .project-latest, .post-latest {
             padding: 0.25rem 0 0.5rem 0.5rem;
-            
+
             .arrow-right {
-              margin-left: 0.2rem;
+              margin-left: 0.05rem;
             }
           }
-          
+
           .project-latest {
             background-color: $white;
             color: $text;
@@ -234,13 +234,20 @@
         }
 
         .big-text {
+          /* Size */
+          height: calc(100% - 2.25rem);
+          padding: 0.5rem;
           /* Font */
           font-size: 6em;
           color: $text-white;
           font-weight: 600;
           /* Colors */
-          @include cloud-background;
-          
+          //@include art-background;
+
+          img {
+            max-height: 2rem;
+          }
+
           span {
             display: inline-block;
             line-height: 1em;
@@ -254,12 +261,14 @@
         background-color: $grey-darkest;
         color: $text-white;
         padding: 0 0 1rem 0.5rem;
-        
-        svg {
-          height: 1rem;
-          width: 1rem;
-          padding: 0;
-          margin: 0;
+
+        .heading {
+          padding: 0.25rem 0.25rem 0 0;
+        }
+
+        .text {
+          color: $text-white;
+          font-weight: 600;
         }
 
         .link-container {
