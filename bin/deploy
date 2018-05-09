@@ -16,6 +16,11 @@ echo ""
 git push
 
 echo ""
-echo "==> Running npm deploy script..."
+echo "==> Building site..."
 echo ""
-npm run deploy  
+npm build
+
+echo ""
+echo "==> Deploying site..."
+echo ""
+git-directory-deploy --directory dist --branch master
