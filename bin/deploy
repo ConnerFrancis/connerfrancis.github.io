@@ -3,7 +3,7 @@
 echo ""
 echo "==> Building site..."
 echo ""
-npm build --verbose
+npm run build --verbose
 
 echo ""
 echo "==> Adding all files to dev branch..."
