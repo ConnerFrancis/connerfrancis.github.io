@@ -1,6 +1,11 @@
 #!/usr/bin/env bash
 
 echo ""
+echo "==> Building site..."
+echo ""
+npm build --verbose
+
+echo ""
 echo "==> Adding all files to dev branch..."
 echo ""
 git add .
@@ -14,11 +19,6 @@ echo ""
 echo "==> Pushing changes..."
 echo ""
 git push
-
-echo ""
-echo "==> Building site..."
-echo ""
-npm build --verbose
 
 echo ""
 echo "==> Deploying site..."
