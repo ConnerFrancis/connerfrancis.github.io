@@ -1,5 +1,5 @@
 # [conr.xyz](https://www.conr.xyz)
-```My personal website built on [vue.js](#technologies) and [github pages](#technologies).```
+My personal website built on [vue.js](#technologies) and [github pages](#technologies).
 
 ___
 
