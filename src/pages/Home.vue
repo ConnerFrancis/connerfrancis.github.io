@@ -3,10 +3,10 @@
   <div id="home" class="fluid justify-end">
 
     <!-- Main div that is full screen height -->
-    <div class="main col-12 screen-height container justify-between">
+    <div class="main col-12 screen-height container">
 
       <!-- Left side -->
-      <div class="left col-9 fluid container">
+      <div class="left col fluid container">
 
         <!-- Latest post and project -->
         <div class="heading col-12 container align-end justify-start">
@@ -41,11 +41,9 @@
       </div>
 
       <!-- Right side -->
-      <div class="pages col-3 fluid col-xs-12 col-sm-12 container justify-end align-end">
+      <div class="pages col fluid col-xs-12 col-sm-12 container justify-end align-end">
 
-        <div class="heading col-12 be-align-start container justify-end">
-          <i class="menu"></i>
-        </div>
+        <app-header class="col-12 be-align-start"></app-header>
 
         <!-- Logo positioning -->
         <h3 class="text col-12 container">Conner's<br/>website<br/>conglomerate</h3>
@@ -114,14 +112,14 @@
 
   import SlideOverTextColor from '@/components/animators/SlideOverTextColor'
 
-  import Logo from '@/components/misc/Logo'
+  import AppHeader from '@/components/AppHeader'
 
   export default {
     name: 'Home',
 
     components: {
       'sotc': SlideOverTextColor,
-      'logo': Logo
+      'app-header': AppHeader
     },
 
     data () {
@@ -219,7 +217,13 @@
             padding: 0.25rem 0 0.5rem 0.5rem;
 
             .arrow-right {
-              margin-left: 0.05rem;
+              margin-left: 0.1rem;
+              transition: margin-left 0.5s ease;
+            }
+            
+            &:hover .arrow-right {
+              margin-left: 0.2rem;
+              transition: margin-left 0.5s ease;
             }
           }
 
@@ -261,11 +265,8 @@
         background-color: $grey-darkest;
         color: $text-white;
         padding: 0 0 1rem 0.5rem;
-
-        .heading {
-          padding: 0.25rem 0.25rem 0 0;
-        }
-
+        width: 3rem; // MASSIVE OVERRIDE INBOUND
+        
         .text {
           color: $text-white;
           font-weight: 600;
