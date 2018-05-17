@@ -13,10 +13,12 @@
     "deploy": "npm run build; push-dir --dir=dist --branch=master --cleanup"
   },
   "dependencies": {
+    "firebase": "^5.0.2",
     "flexboxgrid-sass": "^8.0.5",
     "vue": "^2.5.2",
     "vue-router": "^3.0.1",
-    "vue-style-loader": "^3.1.2"
+    "vue-style-loader": "^3.1.2",
+    "vuefire": "^2.0.0-alpha.11"
   },
   "devDependencies": {
     "autoprefixer": "^7.1.2",

@@ -1,0 +1,37 @@
+{
+  
+  "users": {
+    
+    "username": {
+      "email": "my_name@is.jeff",
+      "posts": [ "id1", "id2" ]
+    }
+    
+  },
+  
+  "posts": {
+    
+    "id1": {
+      "board": "board_name",
+      "author": "username",
+      "content": "etc etc etc here i am i am a post ya yeet",
+      "image": "FIREBASE STORAGE CLOUD IMAGE HERE PLS"
+    },
+    "id2": {
+      "board": "board_name",
+      "author": "username",
+      "content": "i dont have an image.",
+      "image": false
+    }
+    
+  },
+  
+  "boards": {
+    
+    "board_name": {
+      "posts": [ "id1", "id2" ]
+    }
+    
+  }
+  
+}
