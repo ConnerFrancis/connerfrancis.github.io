@@ -33,7 +33,8 @@
 
     data () {
       return {
-        pages: pages
+        pages: pages,
+        postOne: {}
       }
     }
   }
