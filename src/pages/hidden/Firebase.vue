@@ -1,5 +1,5 @@
 <template>
-  
+
   <div id="firebase">
     users:
     {{ users }}
@@ -8,42 +8,42 @@
       {{ user.bio }}
     </div>
   </div>
-  
+
 </template>
 
 <script>
-  
+
   import db from '@/firebase'
-  
+
   export default {
     name: 'Firebase',
-    
+
     data () {
       return {
         users: {}
       }
     },
-    
+
     firebase: {
-      anUser: db.ref('users/1'),
-      
+      anUser: db.ref('users/first'),
+
       users: {
         source: db.ref('users'),
         asObject: true,
-        
+
         cancelCallback(err) {
           window.alert(err)
         }
       }
     }
   }
-  
+
 </script>
 
 <style lang="scss" scoped>
-  
+
   #firebase {
     background-color: $grey-lightest;
   }
-  
+
 </style>
