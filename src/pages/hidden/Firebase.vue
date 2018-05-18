@@ -1,19 +1,41 @@
 <template>
   
   <div id="firebase">
-    yeet
+    users:
+    {{ users }}
+    {{ anUser }}
+    <div v-for="user of users">
+      {{ user.bio }}
+    </div>
   </div>
   
 </template>
 
 <script>
   
+  import db from '@/firebase'
+  
   export default {
     name: 'Firebase',
     
-    //firebase: {
-    //  posts
-    //}
+    data () {
+      return {
+        users: {}
+      }
+    },
+    
+    firebase: {
+      anUser: db.ref('users/1'),
+      
+      users: {
+        source: db.ref('users'),
+        asObject: true,
+        
+        cancelCallback(err) {
+          window.alert(err)
+        }
+      }
+    }
   }
   
 </script>
