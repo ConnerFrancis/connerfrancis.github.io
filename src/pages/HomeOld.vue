@@ -124,7 +124,7 @@ of what this site used to be :]
   // import AppHeader from '@/components/AppHeader'
 
   export default {
-    name: 'Home',
+    name: 'HomeOld',
 
     /*components: {
       'sotc': SlideOverTextColor,
@@ -229,7 +229,7 @@ of what this site used to be :]
               margin-left: 0.1rem;
               transition: margin-left 0.5s ease;
             }
-            
+
             &:hover .arrow-right {
               margin-left: 0.2rem;
               transition: margin-left 0.5s ease;
@@ -275,7 +275,7 @@ of what this site used to be :]
         color: $text-white;
         padding: 0 0 1rem 0.5rem;
         width: 3rem; // MASSIVE OVERRIDE INBOUND
-        
+
         .text {
           color: $text-white;
           font-weight: 600;
