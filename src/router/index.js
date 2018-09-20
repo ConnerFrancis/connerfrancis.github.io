@@ -3,14 +3,12 @@ import Router from 'vue-router'
 
 import pages from '@/pages'
 
-// Test
-import Hello from '@/components/Hello'
-
 Vue.use(Router)
 
 const router = new Router({
   routes: [
-    { path: '/hello', component: Hello }
+    // Misc. routes go here,
+    // otherwise use pages/index.js
   ].concat(pages)
 })
 

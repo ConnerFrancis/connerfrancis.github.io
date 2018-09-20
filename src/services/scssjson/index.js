@@ -1,3 +1,3 @@
-import variables from '!!sass-variable-loader!../../style/modules/_colors.scss'
+//import variables from '!!sass-variable-loader!../../style/modules/_colors.scss'
 
-export default variables
+//export default variables

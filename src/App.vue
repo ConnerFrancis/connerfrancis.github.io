@@ -1,7 +1,7 @@
 <template>
 
-  <div id="app" class="container jumbotron">
-    <router-view class="router-view container jumbotron"></router-view>
+  <div id="app">
+    <router-view class="router-view"></router-view>
   </div>
 
 </template>

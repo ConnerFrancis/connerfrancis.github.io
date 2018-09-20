@@ -1,4 +1,4 @@
-import GridTest from './GridTest'
+/*import GridTest from './GridTest'
 import Firebase from './Firebase'
 
 const hidden = [
@@ -22,6 +22,10 @@ const hidden = [
       hidden: true
     }
   }
-]
+]*/
+
+// TODO: Remove this blank override once
+// the list above is fixed. K thx bye
+const hidden = []
 
 export default hidden

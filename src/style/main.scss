@@ -1,7 +1,8 @@
-// ! comment out modules when using with webpack !
-@import './vendor/index.scss';
 @import './modules/index.scss';
-@import './grid/index.scss';
-@import './icons/index.scss';
-@import './global/index.scss';
-@import './components/index.scss';
+@import './vendor/index.scss';
+
+body {
+  background-color: $brand-main;
+  color: $brand-light;
+  font-family: $font-accent;
+}

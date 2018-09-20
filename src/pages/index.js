@@ -1,15 +1,11 @@
-import style from '@/services/scssjson'
+// Router color shanigans, don't ask
+// import style from '@/services/scssjson'
 
 import hidden from './hidden'
 
 import Home from './Home'
 
 import HomeOld from './HomeOld'
-
-import FellasClub from './FellasClub'
-
-import Experiments from './Experiments'
-import experiments from './experiments'
 
 const pages = [
   {
@@ -28,27 +24,6 @@ const pages = [
     meta: {
       title: 'conner\'s dungeon',
       name: 'HomeOld'
-    }
-  },
-  {
-    path: '/fellasclub',
-    component: FellasClub,
-    name: 'fellasclub',
-    meta: {
-      title: 'F E L L A \' S   C L U B',
-      name: 'Fella\'s club',
-      color: 'red'
-    }
-  },
-  {
-    path: '/experiments',
-    component: Experiments,
-    name: 'experiments',
-    children: experiments,
-    meta: {
-      title: 'Experiments',
-      name: 'Experiments',
-      color: style.cyan
     }
   }
 ].concat(hidden)
