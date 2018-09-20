@@ -1,6 +1,10 @@
 @import './modules/index.scss';
 @import './vendor/index.scss';
 
+*, *::before, *::after {
+  box-sizing: border-box;
+}
+
 body {
   background-color: $brand-main;
   color: $brand-light;
