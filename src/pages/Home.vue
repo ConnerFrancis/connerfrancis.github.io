@@ -1,26 +1,23 @@
 <template>
 
   <div id="home">
-    <div class="left">
-      <div class="links">
-        <p>find me</p>
-        <a
-          v-for="link in softLinks"
-          :key="link.name"
-          :href="link.url"
+    
+    <div id="center">
+      <img src="../assets/global/me.jpg" />
+      
+      <div id="text">
+        <p v-on:click="genName">{{ fullName }}</p>
+        
+        <div id="links">
+          <a
+            v-for="link in links"
+            :key="link.name"
+            :href="link.url"
           >{{ link.name }}</a>
-      </div>
-
-      <div class="pfp"><img src="../assets/global/me.jpg" /></div>
-    </div>
-
-    <div class="right">
-      <div class="video">
-        <h1 class="label">latest video</h1>
-        <div class="image"></div>
-        <div class="meta"></div>
+        </div>
       </div>
     </div>
+    
   </div>
 
 </template>
@@ -30,17 +27,38 @@
 <script>
 
   import pages from '@/pages'
+  import mh    from '@/services/mathhelper'
 
   export default {
     name: 'Home',
 
     data () {
       return {
-        // Pages on the site
-        hardLinks: pages,
-
+        
+        // Full Name
+        fullName: 'javascript broke, have a nice day',
+        
+        // Names
+        firstName: 'conner',
+        firstNames: [
+          'cobbler',
+          'concon',
+          'conocer',
+          'cnoner',
+          'cobbly'
+        ],
+        
+        lastName: 'francis',
+        lastNames: [
+          'franny',
+          'franman',
+          'france says',
+          'fronces',
+          'frinch fri'
+        ],
+        
         // External pages
-        softLinks: [
+        links: [
           {
             name: 'youtube',
             url: 'https://www.youtube.com/thxbro79'
@@ -50,7 +68,18 @@
             url: 'https://www.github.com/ConnerFrancis'
           }
         ]
+        
       }
+    },
+    
+    methods: {
+      genName () {
+        this.fullName = mh.sample(this.firstNames) + ' ' + mh.sample(this.lastNames)
+      }
+    },
+    
+    created () {
+      this.genName()
     }
   }
 
@@ -63,85 +92,62 @@
   #home {
     // Display
     display: flex;
-    align-self: stretch;
+    justify-content: center;
+    align-items: center;
     // Size
     width: 100%;
     height: 100vh;
     padding: 96px;
+    // Font
+    font-size: 24px;
+    
+    img {
+      height: 96px;
+    }
 
-    .left {
+    #center {
       // Display
       display: flex;
-      flex-direction: column;
-      justify-content: space-between;
-      // Size
-      width: 50%;
-      //background-color: black;
-
-      .links {
+      flex-direction: row;
+      
+      #text {
         // Display
         display: flex;
         flex-direction: column;
-        // Font
-        font-weight: bold;
-
-        a, p {
-          // Size
-          margin-bottom: 8px;
-          width: auto;
-          // Font
-          color: $brand-light;
-        }
-
-        a {
-          // Misc
-          cursor: pointer;
-          transition: opacity 0.05s ease;
-          // Font
-          text-decoration: none;
-
-          &:hover { opacity: 0.5; transition: opacity 0.05s ease; }
-        }
-
-        p {
-          opacity: 0.5;
-          cursor: default;
-        }
-      }
-
-      .pfp {
+        align-items: space-around;
+        justify-content: space-around;
         // Size
-        height: 192px;
-        width: 192px;
-        // Colors
-        background-color: #ededed;
-
-        overflow: hidden;
-
-        img {
-          max-height: 192px;
+        padding-left: 32px;
+        min-width: 15ch;
+        // Font
+        letter-spacing: 1px;
+        
+        p {
+          cursor: pointer;
+        }
+        
+        #links {
+          // Display
+          display: flex;
+          flex-direction: row;
+          justify-content: space-between;
+        
+          a {
+            // Colors
+            color: $brand-light;
+            text-decoration: none;
+            opacity: 0.5;
+            // Misc
+            cursor: pointer;
+            
+            &:hover {
+              opacity: 0.25;
+            }
+          }
         }
       }
     }
-
-    .right {
-      // Size
-      width: 50%;
-
-      .video {
-
-        .label {
-          text-align: right;
-          opacity: 0.5;
-        }
-
-        .image {
-          background-color: #ededed;
-          height: 480px;
-        }
-
-      }
-    }
+    
   }
 
 </style>
