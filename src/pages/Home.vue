@@ -100,6 +100,7 @@
     padding: 96px;
     // Font
     font-size: 24px;
+    font-family: $font-accent;
     
     img {
       height: 96px;
@@ -118,12 +119,11 @@
         justify-content: space-around;
         // Size
         padding-left: 32px;
-        min-width: 15ch;
-        // Font
-        letter-spacing: 1px;
+        min-width: 15ch; // <-- this 15ch is about the value of youtube and github combined
         
         p {
           cursor: pointer;
+          font-family: $font-accent;
         }
         
         #links {

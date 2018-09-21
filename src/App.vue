@@ -19,9 +19,10 @@
   @import './style/main.scss';
 
   #app {
-    /* Display */
+    /* Display/size */
     height: 100vh;
     width: 100vw;
+    padding: 32px;
     /* Font */
     -webkit-font-smoothing: antialiased;
     -moz-osx-font-smoothing: grayscale;

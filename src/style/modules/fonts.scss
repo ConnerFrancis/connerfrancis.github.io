@@ -1,1 +1,10 @@
-$font-accent: 'Mukta Mular', sans-serif;
+$font-accent: 'Source Code Pro', monospace;
+$font-main: 'Lato', sans-serif;
+
+p {
+  font-family: $font-main;
+}
+
+h1, h2, h3, h4, h5, h6 {
+  font-family: $font-accent;
+}
