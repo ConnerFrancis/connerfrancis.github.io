@@ -21,8 +21,10 @@
   #app {
     /* Display/size */
     height: 100vh;
-    width: 100vw;
-    padding: 32px;
+    width: 100%;
+    display: flex;
+    justify-content: stretch;
+    align-items: stretch;
     /* Font */
     -webkit-font-smoothing: antialiased;
     -moz-osx-font-smoothing: grayscale;

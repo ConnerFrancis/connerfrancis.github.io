@@ -5,10 +5,24 @@
   box-sizing: border-box;
 }
 
+html {
+  margin: 0;
+  padding: 0;
+
+  height: 100vh;
+  width: 100vw;
+}
+
 body {
   background-color: $brand-main;
   color: $brand-light;
   font-family: $font-accent;
+
+  margin: 0;
+  padding: 0;
+
+  height: 100vh;
+  width: 100%;
 }
 
 p, h1, h2, h3, h4, h5, h6 {
