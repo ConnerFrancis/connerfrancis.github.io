@@ -2,11 +2,11 @@ import VueFireTest from './VueFireTest'
 
 const hidden = [
   {
-    path: '/vuefiretest',
+    path: '/dbtest',
     component: VueFireTest,
     name: 'vuefiretest',
     meta: {
-      title: 'VueFire test',
+      title: 'db testing',
       name: 'vuefiretest',
       hidden: true
     }
