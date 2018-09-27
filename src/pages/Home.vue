@@ -18,7 +18,7 @@
     </div>
     
     <div class="right-wrapper">
-      <img src="../assets/global/me_two.jpg" />
+      <img src="../assets/global/skele_px_outline.png" />
     </div>
 
   </div>
@@ -151,8 +151,9 @@
       padding-left: 64px;
 
       img {
-        height: 192px;
-        width: 192px;
+        height: 160px;
+        width: 160px;
+        //filter: drop-shadow(0px 8px 8px rgba(0,0,0,0.2));
       }
     }
   }
