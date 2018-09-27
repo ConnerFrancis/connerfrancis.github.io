@@ -1,0 +1,85 @@
+/**
+ * Form modifiers
+ */
+ 
+form {
+  // Display
+  display: flex;
+  flex-direction: column;
+  // Font
+  font-size: 16px;
+  
+  input, button, .button {
+    margin-top: 16px;
+    &:first-child { margin-top: 0; }
+  }
+}
+
+
+/**
+ * Input types
+ */
+ 
+input[type="text"], input[type="password"] {
+  // Colors
+  background-color: rgba(0,0,0,0);
+  color: $brand-dark;
+  border: 0px;
+  outline: 0px;
+  // Border
+  border-bottom: 2px solid $brand-dark;
+  // Size
+  padding-bottom: 8px;
+  // Pos
+  position: relative;
+  
+  &::placeholder {
+    opacity: 0.25;
+    color: $brand-dark;
+  }
+  
+  &:focus {
+    color: $brand-light;
+    border-bottom: 2px solid $brand-light;
+    
+    &::placeholder {
+      opacity: 1;
+      color: $brand-light;
+    }
+  }
+}
+
+button, .button {
+  // Colors
+  background-color: rgba(0,0,0,0);
+  border: 2px solid $brand-dark;
+  outline: 0px;
+  // Font
+  font-family: $font-accent;
+  font-size: 16px;
+  //font-weight: bold;
+  // Size
+  padding: 8px 16px;
+  // Misc
+  cursor: pointer;
+  
+  &:hover {
+    background-color: $brand-dark;
+    color: $brand-light;
+  }
+  
+  &:active {
+    background-color: $brand-light;
+    color: $brand-dark;
+    border-color: $brand-light;
+  }
+  
+  &.small {
+    // Colors
+    background-color: rgba(0,0,0,0);
+    // Font
+    font-family: $font-main;
+    // Size
+    padding: 16px 8px;
+  }
+}

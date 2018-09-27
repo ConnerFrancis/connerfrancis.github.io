@@ -2,16 +2,23 @@
 
   <div id="home">
 
-    <div id="center">
-      <img src="../assets/global/me.jpg" />
-    </div>
-
-    <div id="text">
+    <div class="left-wrapper">
+      <router-link
+        class="arrow-link page"
+        v-for="page in pages"
+        :key="page.name"
+        :to="page.loc"
+      >{{ page.name }}</router-link>
       <a
+        class="arrow-link link"
         v-for="link in links"
         :key="link.name"
         :href="link.url"
       >{{ link.name }}</a>
+    </div>
+    
+    <div class="right-wrapper">
+      <img src="../assets/global/me_two.jpg" />
     </div>
 
   </div>
@@ -52,19 +59,35 @@
           'fronces',
           'frinch fri'
         ],
+        
+        // Internal pages
+        pages: [
+          {
+            name: 'Boards',
+            loc: '/boards'
+          },
+          {
+            name: 'Login or sign up',
+            loc: '/login'
+          },
+          {
+            name: 'Experiments',
+            loc: '/experiments'
+          }
+        ],
 
         // External pages
         links: [
           {
-            name: 'youtube',
+            name: 'YouTube',
             url: 'https://www.youtube.com/thxbro79'
           },
           {
-            name: 'github',
+            name: 'Github',
             url: 'https://www.github.com/ConnerFrancis'
           },
           {
-            name: 'steam',
+            name: 'Steam',
             url: 'https://steamcommunity.com/id/kumo_duck/'
           }
         ]
@@ -94,52 +117,44 @@
   #home {
     // Display
     display: flex;
-    flex-direction: column;
     justify-content: center;
     align-items: center;
+    flex-direction: row;
     // Size
     width: 100%;
     // Font
     font-family: $font-main;
 
-    #center {
+    .left-wrapper {
       // Display
       display: flex;
-      flex-grow: 1;
-      align-items: flex-end;
-
-      img {
-        height: 96px;
-        width: 320px;
-      }
-    }
-
-    #text {
-      // Display
-      display: flex;
-      flex-grow: 1;
-      align-items: flex-end;
-
-      a {
+      flex-direction: column;
+      
+      .link, .page {
         // Colors
-        color: $brand-light;
         text-decoration: none;
         // Size
-        margin-bottom: 16px;
-        margin-left: 16px;
+        margin-bottom: 12px;
         // Misc
         cursor: pointer;
-
-        &:first-child {
-          margin-left: 0;
-        }
-
-        &:hover {
-          opacity: 0.5;
-        }
+      }
+      
+      .link {
+        font-weight: normal;
       }
     }
 
+    .right-wrapper {
+      // Display
+      display: flex;
+      // Size
+      padding-left: 64px;
+
+      img {
+        height: 192px;
+        width: 192px;
+      }
+    }
   }
 
 </style>

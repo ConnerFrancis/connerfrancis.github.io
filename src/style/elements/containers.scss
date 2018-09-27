@@ -1,0 +1,36 @@
+.card {
+  // Display
+  display: flex;
+  justify-content: flex-start;
+  align-items: flex-start;
+  flex-direction: column;
+  // Colors
+  color: $text-light;
+  
+  .inner {
+    // Display
+    display: flex;
+    justify-content: flex-start;
+    align-items: flex-start;
+    flex-direction: column;
+    // Size
+    padding: 48px;
+    // Colors
+    background-color: $brand-light;
+    color: $text-dark;
+    
+    &.dark {
+      // Colors
+      background-color: $brand-dark;
+      color: $text-light;
+    }
+  }
+  
+  .footer {
+    // Display
+    display: flex;
+    justify-content: flex-end;
+    align-items: flex-start;
+    flex-direction: row;
+  }
+}

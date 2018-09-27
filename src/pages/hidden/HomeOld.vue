@@ -38,7 +38,7 @@ of what this site used to be :]
 
         <!-- Large accent text and background image -->
         <div class="big-text col-12 fluid container go-down justify-end">
-          <img src="../assets/svg/logo.svg" />
+          <img src="../../assets/svg/logo.svg" />
           <!--Conner's<br/>website<br/>conglomerate-->
           <!--<span>Conner's</span>
           <span>website</span>

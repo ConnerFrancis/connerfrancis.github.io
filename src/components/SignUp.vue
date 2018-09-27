@@ -1,20 +1,17 @@
 <template>
   
-  <div id="sign-up">
-    
+  <form @submit.prevent="handleSubmit" id="sign-up" class="standout">
+    <h3>signup</h3>
     <input
       type="text"
       v-model="email"
       placeholder="email"
     />
-    <input
-      type="password"
-      v-model="password"
-      placeholder="password" 
+    <input type="password" v-model="password" placeholder="password" 
     />
-    <button :click="signUp">sign up</button>
+    <button type="submit">sign up</button>
     
-  </div>
+  </form>
   
 </template>
 
@@ -35,20 +32,8 @@
     },
     
     methods: {
-      
-      signUp () {
-        // Simple sign up with auth
-        firebase.auth().createUserWithEmailAndPassword(this.email, this.password).then(
-          // onResolve
-          function (user) {
-            // stuff
-          },
-          // onReject
-          function (err) {
-            // stuff
-            alert(err.message)
-          }
-        )
+      handleSubmit () {
+        // etc
       }
     }
   }
@@ -59,6 +44,8 @@
 
 <style lang="scss" scoped>
   
-  
+  #sign-up {
+    color: $brand-dark;
+  }
   
 </style>

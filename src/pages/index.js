@@ -4,8 +4,7 @@
 import hidden from './hidden'
 
 import Home from './Home'
-
-import HomeOld from './HomeOld'
+import LoginScreen from './LoginScreen'
 
 const pages = [
   {
@@ -18,12 +17,12 @@ const pages = [
     }
   },
   {
-    path: '/homeold',
-    component: HomeOld,
-    name: 'HomeOld',
+    path: '/login',
+    component: LoginScreen,
+    name: 'LoginScreen',
     meta: {
-      title: 'conner\'s dungeon',
-      name: 'HomeOld'
+      title: 'login or signup',
+      name: 'LoginScreen'
     }
   }
 ].concat(hidden)

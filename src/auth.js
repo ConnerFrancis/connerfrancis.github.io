@@ -1,18 +1,15 @@
-/**
- * Authentication setup for Firebase
- */
- 
-import firebase from 'firebase/app'
+import firebase from '@/firebase'
 
-import store from '@/store'
-import { SET_USER, LOGOUT } from '@/store/currentUser/mutations'
+import store from './store';
+import { SET_USER, LOGOUT } from '@/store/currentUser/mutations';
 
 firebase.auth().onAuthStateChanged(function(user) {
-  // If the user exists and is signed in
   if (user) {
-    store.commit(`user/${SET_USER}`, user)
-  // If the user does not exist or is signed out
+    store.commit(`currentUser/${SET_USER}`, user)
+    store.dispatch('setDoc', user)
   } else {
-    store.commit(`user/${LOGOUT}`)
+    store.commit(`currentUser/${LOGOUT}`)
   }
 })
+
+// NOTE: This file is ran in @/main.js

@@ -1,12 +1,19 @@
 // Firebase
-import firebase from 'firebase/app'
-import 'firebase/firestore'
+import firebase from '@/firebase'
+import db from '@/db'
 
-import { SET_USER, LOGOUT } from './mutations'
+import {
+  SET_USER,
+  LOGOUT,
+  SET_DOC
+} from './mutations'
+
+const usersRef = db.collection('users')
 
 const state = {
   // Holds the object from Firebase Auth
   data: {},
+  doc: {},
   // Default state should be false
   loggedIn: false
 }
@@ -23,6 +30,12 @@ const mutations = {
   [LOGOUT] (state) {
     state.loggedIn = false
     state.data = {}
+    state.doc = {}
+  },
+  
+  // Set the Firestore document
+  [SET_DOC] (state, doc) {
+    state.doc = doc
   }
 }
 
@@ -31,28 +44,29 @@ const actions = {
   // Log a user in
   async login (store, payload) {
     // If the user is already signed in, exit
-    // TODO: Provide GUI notification
-    if (store.state.loggedIn) return
+    if (store.state.loggedIn) {
+      // TODO: Provide GUI notification of logout please
+      throw new Error('Error: ' + 'Already logged in.')
+    }
     
     // Try to sign in with firebase
-    // TODO: handle errors properly
-    try {
-      await firebase.auth().signInWithEmailAndPassword(payload.email, payload.password).catch(function(error) {
-        // error.code, error.message
-      })
-    } catch (e) {
-      console.log(e)
-    }
+    await firebase.auth().signInWithEmailAndPassword(payload.email, payload.password).catch((e) => {
+      throw new Error('Error: ' + e.message)
+    })
   },
   
   // Log a user out
   async logout () {
     // TODO: handle errors with GUI or whatever
-    try {
-      await firebase.auth().signOut()
-    } catch (e) {
-      console.log(e)
-    }
+    await firebase.auth().signOut().catch((e) => {
+      throw new Error('Error: ' + e.message)
+    })
+  },
+  
+  // Set the Firestore doc
+  async setDoc (context, user) {
+    const doc = await db.collection('users').doc(user.uid).get()
+    context.commit(SET_DOC, doc)
   }
   
 }
@@ -63,6 +77,14 @@ const getters = {
   // NOTE: maybe use es6 destructors idk
   loggedIn: state => {
     return state.loggedIn
+  },
+  
+  data: state => {
+    return state.data
+  },
+  
+  doc: state => {
+    return state.doc
   }
   
 }

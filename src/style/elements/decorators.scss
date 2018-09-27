@@ -1,0 +1,44 @@
+.arrow-link {
+  // Colors
+  color: $brand-dark;
+  position: relative;
+  // Font
+  font-weight: bold;
+  
+  &::before, &::after {
+    content: '';
+    position: absolute;
+    opacity: 0;
+  }
+  
+  &::before {
+    // Size
+    width: 16px;
+    // Colors
+    border-bottom: 2px $brand-light solid;
+    // Pos
+    left: -24px;
+    top: 8px;
+  }
+  &::after {
+    // Size
+    height: 8px;
+    width: 8px;
+    // Colors
+    border-top: 2px $brand-light solid;
+    border-right: 2px $brand-light solid;
+    background-color: rgba(0,0,0,0);
+    // Pos
+    left: -16px;
+    top: 5px;
+    // Misc
+    transform: rotate(45deg);
+  }
+  
+  &:hover {
+    opacity: 1;
+    color: $brand-light;
+    
+    &::before, &::after { opacity: 1; }
+  }
+}
