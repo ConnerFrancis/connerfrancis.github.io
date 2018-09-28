@@ -1,7 +1,7 @@
 /**
  * Form modifiers
  */
- 
+
 form {
   // Display
   display: flex;
@@ -10,9 +10,9 @@ form {
   flex-direction: column;
   // Font
   font-size: 16px;
-  
+
   input { width: 100%; }
-  
+
   input, button, .button, .wrapper, label {
     margin-top: 16px;
     &:first-child { margin-top: 0; }
@@ -23,7 +23,7 @@ form {
 /**
  * Input types
  */
- 
+
 input[type="text"], input[type="password"] {
   // Colors
   background-color: rgba(0,0,0,0);
@@ -36,16 +36,16 @@ input[type="text"], input[type="password"] {
   padding-bottom: 8px;
   // Pos
   position: relative;
-  
+
   &::placeholder {
     opacity: 0.25;
     color: $brand-dark;
   }
-  
+
   &:focus {
     color: $brand-light;
     border-bottom: 2px solid $brand-light;
-    
+
     &::placeholder {
       opacity: 1;
       color: $brand-light;
@@ -67,32 +67,24 @@ button, .button {
   // Misc
   cursor: pointer;
   position: relative;
-  
-  // TODO: SLIDE IN BACKGROUND?
-  
-  &::before {
-    content: '';
-    position: absolute;
-    width: 100%;
-    height: 100%;
-    top: 1px;
-    left: 1px;
-    // Colors
-    border: 2px solid $brand-dark;
-    background-color: $brand-dark;
-  }
-  
+  // Slide-in transition
+  box-shadow: inset 0 0 0 0 $brand-dark;
+  transition: box-shadow 0.1s ease, color 0.15s ease;
+
   &:hover {
-    background-color: $brand-dark;
+    //background-color: $brand-dark;
     color: $brand-light;
+    box-shadow: inset 0 -100px 0 0 $brand-dark;
   }
-  
+
   &:active {
     background-color: $brand-light;
     color: $brand-dark;
     border-color: $brand-light;
+    box-shadow: none;
+    transition: box-shadow 0s;
   }
-  
+
   &.small {
     // Colors
     background-color: rgba(0,0,0,0);

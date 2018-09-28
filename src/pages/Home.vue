@@ -16,7 +16,7 @@
         :href="link.url"
       >{{ link.name }}</a>
     </div>
-    
+
     <div class="right-wrapper">
       <img src="../assets/global/skele_px_outline.png" />
     </div>
@@ -59,7 +59,7 @@
           'fronces',
           'frinch fri'
         ],
-        
+
         // Internal pages
         pages: [
           {
@@ -129,7 +129,7 @@
       // Display
       display: flex;
       flex-direction: column;
-      
+
       .arrow-link {
         // Colors
         text-decoration: none;
@@ -137,12 +137,12 @@
         padding-bottom: 12px;
         // Misc
         cursor: pointer;
-        
+
         &:last-child {
           padding-top: 0;
         }
       }
-      
+
       .link {
         font-weight: normal;
       }
@@ -157,7 +157,11 @@
       img {
         height: 160px;
         width: 160px;
-        //filter: drop-shadow(0px 8px 8px rgba(0,0,0,0.2));
+        -ms-interpolation-mode: nearest-neighbor;
+        image-rendering: -webkit-optimize-contrast;
+        image-rendering: -moz-crisp-edges;
+        image-rendering: pixelated;
+        //filter: drop-shadow(0px 8px 8px rgba(0,0,0,0.5));
       }
     }
   }
