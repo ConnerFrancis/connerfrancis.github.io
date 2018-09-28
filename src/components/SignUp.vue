@@ -1,16 +1,11 @@
 <template>
   
   <form @submit.prevent="handleSubmit" id="sign-up" class="standout">
-    <h3>signup</h3>
-    <input
-      type="text"
-      v-model="email"
-      placeholder="email"
-    />
-    <input type="password" v-model="password" placeholder="password" 
-    />
-    <button type="submit">sign up</button>
-    
+    <input type="text" v-model="email" placeholder="Email" />
+    <input id="password" type="password" v-model="password" placeholder="Password" />
+    <input id="confirm-password" autocomplete="new-password" type="password" v-model="confirmPassword" placeholder="Confirm password" />
+    <button type="submit">Sign up</button>
+    <label>{{ status }}</label>
   </form>
   
 </template>
@@ -27,13 +22,24 @@
     data () {
       return {
         email: '',
-        password: ''
+        password: '',
+        confirmPassword: '',
+        
+        status: ''
       }
     },
     
     methods: {
       handleSubmit () {
-        // etc
+        this.$store.dispatch('currentUser/signUp', {
+          email: this.email,
+          password: this.password,
+          confirmPassword: this.confirmPassword
+        }).then(() => {
+          this.status = 'Account created!'
+        }).catch((e) => {
+          this.status = e.message
+        })
       }
     }
   }
@@ -45,7 +51,7 @@
 <style lang="scss" scoped>
   
   #sign-up {
-    color: $brand-dark;
+    
   }
   
 </style>

@@ -5,11 +5,15 @@
 form {
   // Display
   display: flex;
+  justify-content: flex-start;
+  align-items: flex-start;
   flex-direction: column;
   // Font
   font-size: 16px;
   
-  input, button, .button {
+  input { width: 100%; }
+  
+  input, button, .button, .wrapper, label {
     margin-top: 16px;
     &:first-child { margin-top: 0; }
   }
@@ -62,6 +66,21 @@ button, .button {
   padding: 8px 16px;
   // Misc
   cursor: pointer;
+  position: relative;
+  
+  // TODO: SLIDE IN BACKGROUND?
+  
+  &::before {
+    content: '';
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    top: 1px;
+    left: 1px;
+    // Colors
+    border: 2px solid $brand-dark;
+    background-color: $brand-dark;
+  }
   
   &:hover {
     background-color: $brand-dark;

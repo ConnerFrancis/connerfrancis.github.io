@@ -83,12 +83,12 @@
             url: 'https://www.youtube.com/thxbro79'
           },
           {
-            name: 'Github',
-            url: 'https://www.github.com/ConnerFrancis'
-          },
-          {
             name: 'Steam',
             url: 'https://steamcommunity.com/id/kumo_duck/'
+          },
+          {
+            name: 'Github',
+            url: 'https://www.github.com/ConnerFrancis'
           }
         ]
 
@@ -130,13 +130,17 @@
       display: flex;
       flex-direction: column;
       
-      .link, .page {
+      .arrow-link {
         // Colors
         text-decoration: none;
         // Size
-        margin-bottom: 12px;
+        padding-bottom: 12px;
         // Misc
         cursor: pointer;
+        
+        &:last-child {
+          padding-top: 0;
+        }
       }
       
       .link {

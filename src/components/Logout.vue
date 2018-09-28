@@ -15,7 +15,9 @@
     name: 'Logout',
     
     data () {
-      status: ''
+      return {
+        status: ''
+      }
     },
     
     methods: {

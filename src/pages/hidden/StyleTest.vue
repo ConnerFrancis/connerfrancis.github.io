@@ -1,31 +1,39 @@
 <template>
   
-  <div id="styletest">
+  <div id="styletest" class="container fluid">
     
-    <h1>header 1</h1>
-    <h2>header 2</h2>
-    <h3>header 3</h3>
-    <h4>header 4</h4>
-    <h5>header 5</h5>
-    <h6>header 6</h6>
+    <div class="container col">
     
-    <div class="card">
-      <div class="inner dark">
-        <h1>Urgent</h1>
-        <h4>Description with header four.</h4>
-        <h3>header 3</h3>
-        <h4>header 4</h4>
-        <h5>header 5</h5>
-        <h6>header 6</h6>
-        <p>Lorum ipsum dolor sit amet.</p>
+      <h1>header 1</h1>
+      <h2>header 2</h2>
+      <h3>header 3</h3>
+      <h4>header 4</h4>
+      <h5>header 5</h5>
+      <h6>header 6</h6>
+      
+      <div class="card">
+        <div class="inner dark">
+          <h1>Urgent</h1>
+          <h4>Description with header four.</h4>
+          <h3>header 3</h3>
+          <h4>header 4</h4>
+          <h5>header 5</h5>
+          <h6>header 6</h6>
+          <p>Lorum ipsum dolor sit amet.</p>
+        </div>
+        <div class="footer">
+          <button>Read</button>
+        </div>
       </div>
-      <div class="footer">
-        <button>Read</button>
-      </div>
+      
+      <h1>no</h1>
+      <h2>yes</h2>
+      
     </div>
     
-    <h1>no</h1>
-    <h2>yes</h2>
+    <div class="col-2">
+      <h1>help</h1>
+    </div>
   </div>
   
 </template>
@@ -47,7 +55,11 @@
 <style lang="scss" scoped>
   
   #styletest {
+    background-color: rgba(255,255,255,0.3);
     
+    .col {
+      border: 1px solid red;
+    }
   }
   
 </style>

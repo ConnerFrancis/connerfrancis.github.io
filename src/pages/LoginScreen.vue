@@ -1,9 +1,10 @@
 <template>
   
-  <div id="login-screen">
-      <login></login>
-      <signup></signup>
-      <logout></logout>
+  <div id="login-screen" class="container fluid">
+    <div class="wrapper container">
+      <login class="col-2"></login>
+      <signup class="col-2"></signup>
+    </div>
   </div>
   
 </template>
@@ -11,6 +12,8 @@
 <!-- ### -->
 
 <script>
+  
+  import { mapGetters } from 'vuex'
   
   import Login  from '@/components/Login'
   import SignUp from '@/components/SignUp'
@@ -23,6 +26,12 @@
       login: Login,
       signup: SignUp,
       logout: Logout
+    },
+    
+    computed: {
+      ...mapGetters({
+        loggedIn: 'currentUser/loggedIn'
+      })
     }
   }
   
@@ -34,14 +43,14 @@
   
   #login-screen {
     // Display
-    display: flex;
-    justify-content: center;
     align-items: center;
-    // Size
-    width: 100%;
     
-    #login {
-      margin-right: 32px;
+    .wrapper {
+      justify-content: center;
+      
+      #login {
+        margin-right: 32px;
+      }
     }
   }
   

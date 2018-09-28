@@ -3,7 +3,11 @@
   <form @submit.prevent="handleSubmit" id="login">
     <input v-model="email" placeholder="Email" type="text" />
     <input v-model="password" placeholder="Password" type="password" />
-    <button type="submit">Login</button>
+    <div class="wrapper">
+      <button type="submit">Login</button>
+      <logout v-if="loggedIn"></logout>
+    </div>
+    <label>{{ status }}</label>
   </form>
   
 </template>
@@ -11,10 +15,17 @@
 <!-- ### -->
 
 <script>
-  import { mapActions } from 'vuex'
+
+  import { mapActions, mapGetters } from 'vuex'
+  
+  import Logout from '@/components/Logout'
 
   export default {
     name: 'Login',
+    
+    components: {
+      logout: Logout
+    },
     
     data () {
       return {
@@ -25,17 +36,13 @@
       }
     },
     
+    computed: {
+      ...mapGetters({
+        loggedIn: 'currentUser/loggedIn'
+      })
+    },
+    
     methods: {
-      // Show login was successful
-      showLoggedIn () {
-        this.status = 'Login successful!'
-      },
-      
-      // Show an error if login was not successful
-      showError(e) {
-        this.status = e.message
-      },
-      
       // Handle the submit
       handleSubmit () {
         this.$store.dispatch('currentUser/login', {
@@ -43,10 +50,10 @@
           password: this.password
         }).then(() => {
           // No promise Errors
-          this.showLoggedIn()
+          this.status = 'Login successful!'
         }).catch((e) => {
           // Errors
-          this.showError(e)
+          this.status = e.message
         })
       }
     }
@@ -59,7 +66,12 @@
 <style lang="scss" scoped>
   
   #login {
-    
+    .wrapper {
+      width: 100%;
+      // Display
+      display: flex;
+      justify-content: space-between;
+    }
   }
   
 </style>

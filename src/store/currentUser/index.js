@@ -46,12 +46,22 @@ const actions = {
     // If the user is already signed in, exit
     if (store.state.loggedIn) {
       // TODO: Provide GUI notification of logout please
-      throw new Error('Error: ' + 'Already logged in.')
+      throw new Error('Already logged in.')
     }
     
     // Try to sign in with firebase
     await firebase.auth().signInWithEmailAndPassword(payload.email, payload.password).catch((e) => {
-      throw new Error('Error: ' + e.message)
+      
+      switch(e.code) {
+        case 'auth/user-not-found':
+          throw new Error('That account does not exist.')
+        case 'auth/invalid-email':
+          throw new Error('Invalid email or credentials.')
+        case 'auth/wrong-password':
+          throw new Error('Incorrect password.')
+        default:
+          throw new Error(e.code + ': ' + e.message)
+      }
     })
   },
   
@@ -59,7 +69,7 @@ const actions = {
   async logout () {
     // TODO: handle errors with GUI or whatever
     await firebase.auth().signOut().catch((e) => {
-      throw new Error('Error: ' + e.message)
+      throw new Error(e.code + ': ' + e.message)
     })
   },
   
@@ -67,6 +77,16 @@ const actions = {
   async setDoc (context, user) {
     const doc = await db.collection('users').doc(user.uid).get()
     context.commit(SET_DOC, doc)
+  },
+  
+  async signUp (store, payload) {
+    if (payload.password !== payload.confirmPassword) {
+      throw new Error('Passwords are not the same.')
+    }
+    
+    await firebase.auth().createUserWithEmailAndPassword(payload.email, payload.password).catch((e) => {
+      throw new Error(e.code + ': ' + e.message)
+    })
   }
   
 }

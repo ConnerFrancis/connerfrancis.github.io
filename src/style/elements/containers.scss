@@ -1,11 +1,51 @@
-.card {
+/**
+ * Flexbox
+ */
+
+$columns: 12;
+
+.container {
   // Display
   display: flex;
-  justify-content: flex-start;
-  align-items: flex-start;
+  flex-direction: row;
+  flex-wrap: no-wrap;
+  
+  // Modifiers
+  
+  &.fluid {
+    justify-self: stretch;
+    align-self: strech;
+  }
+  &.dir-col {
+    flex-direction: column;
+  }
+  
+  .col {
+    flex-basis: 100%;
+    flex: 1;
+    //width: auto;
+    overflow: wrap;
+  
+    @for $c from 1 through $columns {
+      &-#{$c} {
+        flex-basis: (100 / ($columns / $c)) * 1%;
+        //width: ((100% / $columns) * $c);
+      }
+    }
+  }
+}
+
+/**
+ * Stylers
+ */
+
+.card {
+  // Display
   flex-direction: column;
   // Colors
   color: $text-light;
+  
+  &.dark { background-color: $brand-dark; color: $text-light; }
   
   .inner {
     // Display

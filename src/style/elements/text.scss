@@ -14,7 +14,7 @@ $headers: 'h1', 'h2', 'h3', 'h4', 'h5', 'h6';
 // make the headers closer than they are to other elements
 @each $h-one in $headers {
   @each $h-two in $headers {
-    #{$h-one} + #{$h-two} {
+    .card #{$h-one} + #{$h-two} {
       margin-top: -24px;
     }
   }

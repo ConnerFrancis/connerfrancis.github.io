@@ -9,6 +9,7 @@
     content: '';
     position: absolute;
     opacity: 0;
+    transition: left 0.15s ease;
   }
   
   &::before {
@@ -17,7 +18,7 @@
     // Colors
     border-bottom: 2px $brand-light solid;
     // Pos
-    left: -24px;
+    left: -32px; // -24px
     top: 8px;
   }
   &::after {
@@ -29,7 +30,7 @@
     border-right: 2px $brand-light solid;
     background-color: rgba(0,0,0,0);
     // Pos
-    left: -16px;
+    left: -24px; // -16px
     top: 5px;
     // Misc
     transform: rotate(45deg);
@@ -39,6 +40,15 @@
     opacity: 1;
     color: $brand-light;
     
-    &::before, &::after { opacity: 1; }
+    &::before, &::after {
+      opacity: 1;
+    }
+    
+    &::before {
+      left: -24px;
+    }
+    &::after {
+      left: -16px;
+    }
   }
 }
