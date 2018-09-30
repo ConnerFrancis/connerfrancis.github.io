@@ -18,7 +18,7 @@
     </div>
 
     <div class="right-wrapper">
-      <img src="../assets/global/skele_px_outline.png" />
+      <img src="../assets/global/skeletonne.png" />
     </div>
 
   </div>
@@ -156,7 +156,6 @@
 
       img {
         height: 160px;
-        width: 160px;
         -ms-interpolation-mode: nearest-neighbor;
         image-rendering: -webkit-optimize-contrast;
         image-rendering: -moz-crisp-edges;
