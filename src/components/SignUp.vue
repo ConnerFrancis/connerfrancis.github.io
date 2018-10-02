@@ -36,9 +36,15 @@
           password: this.password,
           confirmPassword: this.confirmPassword
         }).then(() => {
-          this.status = 'Account created!'
+          this.$store.dispatch('toast/addToast', {
+            type: 'success',
+            message: 'Created account successfully!'
+          })
         }).catch((e) => {
-          this.status = e.message
+          this.$store.dispatch('toast/addToast', {
+            type: 'error',
+            message: e.message
+          })
         })
       }
     }

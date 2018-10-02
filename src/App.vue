@@ -2,14 +2,21 @@
 
   <div id="app" class="container">
     <router-view class="router-view"></router-view>
+    <toast></toast>
   </div>
 
 </template>
 
 <script>
 
+  import Toast from '@/components/Toast'
+
   export default {
-    name: 'App'
+    name: 'App',
+    
+    components: {
+      toast: Toast
+    }
   }
 
 </script>

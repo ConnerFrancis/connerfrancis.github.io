@@ -24,6 +24,10 @@
       handleSubmit () {
         this.$store.dispatch('currentUser/logout').then(() => {
           this.status = 'Logout successful.'
+          this.$store.dispatch('toast/addToast', {
+            type: 'success',
+            message: 'Logged out successfully!'
+          })
         }).catch((e) => {
           this.status = e.message
         })

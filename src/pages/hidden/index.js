@@ -1,5 +1,7 @@
 import VueFireTest from './VueFireTest'
 import StyleTest from './StyleTest'
+import ToastTest from './ToastTest'
+import TransitionTest from './TransitionTest'
 
 import HomeOld from './HomeOld'
 
@@ -21,6 +23,26 @@ const dev = [
     meta: {
       title: 'style testing',
       name: 'styletest',
+      hidden: true
+    }
+  },
+  {
+    path: '/test/toast',
+    component: ToastTest,
+    name: 'toasttest',
+    meta: {
+      title: 'toast notifications testing',
+      name: 'toasttest',
+      hidden: true
+    }
+  },
+  {
+    path: '/test/transition',
+    component: TransitionTest,
+    name: 'transitiontest',
+    meta: {
+      title: 'vue transition testing',
+      name: 'transitiontest',
       hidden: true
     }
   }

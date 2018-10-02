@@ -7,7 +7,6 @@
       <button type="submit">Login</button>
       <logout v-if="loggedIn"></logout>
     </div>
-    <label>{{ status }}</label>
   </form>
   
 </template>
@@ -30,9 +29,7 @@
     data () {
       return {
         email: '',
-        password: '',
-        
-        status: ''
+        password: ''
       }
     },
     
@@ -50,10 +47,17 @@
           password: this.password
         }).then(() => {
           // No promise Errors
-          this.status = 'Login successful!'
+          this.$store.dispatch('toast/addToast', {
+            type: 'success',
+            message: 'Logged in successfully!'
+          })
         }).catch((e) => {
           // Errors
           this.status = e.message
+          this.$store.dispatch('toast/addToast', {
+            type: 'error',
+            message: e.message
+          })
         })
       }
     }

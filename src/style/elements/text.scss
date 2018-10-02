@@ -6,19 +6,23 @@ p, h1, h2, h3, h4, h5, h6 {
 h1, h2, h3, h4, h5, h6 {
   font-family: $font-main;
   font-weight: normal;
-  padding-bottom: 32px;
+  //padding-bottom: 32px;
+  padding-bottom: 8px;
+  
+  &:last-child { padding-bottom: 0px; }
 }
 
+
 // iterate and select headers where they follow each other
-$headers: 'h1', 'h2', 'h3', 'h4', 'h5', 'h6';
+//$headers: 'h1', 'h2', 'h3', 'h4', 'h5', 'h6';
 // make the headers closer than they are to other elements
-@each $h-one in $headers {
-  @each $h-two in $headers {
-    .card #{$h-one} + #{$h-two} {
-      margin-top: -24px;
-    }
-  }
-}
+//@each $h-one in $headers {
+//  @each $h-two in $headers {
+//    .card #{$h-one} + #{$h-two} {
+//      margin-top: -24px;
+//    }
+//  }
+//}
 
 h1 {
   font-size: 250%;
