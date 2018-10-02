@@ -18,7 +18,7 @@
     </div>
 
     <div class="right-wrapper">
-      <img src="../assets/global/skeletonne.png" />
+      <img src="/static/twotone_flipped.png" />
     </div>
 
   </div>
