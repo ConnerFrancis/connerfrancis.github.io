@@ -77,6 +77,7 @@ const actions = {
     context.commit(SET_DOC, doc)
   },
 
+  // Create a new account
   async signUp (store, payload) {
     if (payload.password !== payload.confirmPassword) {
       throw new Error('Passwords are not the same.')

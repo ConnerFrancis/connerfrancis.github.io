@@ -2,20 +2,7 @@
 
   <div id="home">
 
-    <div class="left-wrapper">
-      <router-link
-        class="arrow-link page"
-        v-for="page in pages"
-        :key="page.name"
-        :to="page.loc"
-      >{{ page.name }}</router-link>
-      <a
-        class="arrow-link link"
-        v-for="link in links"
-        :key="link.name"
-        :href="link.url"
-      >{{ link.name }}</a>
-    </div>
+    <site-links></site-links>
 
     <div class="right-wrapper">
       <img src="/static/twotone_flipped.png" />
@@ -31,9 +18,15 @@
 
   import pages from '@/pages'
   import mh    from '@/services/mathhelper'
+  
+  import SiteLinks from '@/components/SiteLinks'
 
   export default {
     name: 'Home',
+    
+    components: {
+      'site-links': SiteLinks
+    },
 
     data () {
       return {
@@ -58,40 +51,7 @@
           'france says',
           'fronces',
           'frinch fri'
-        ],
-
-        // Internal pages
-        pages: [
-          {
-            name: 'Boards',
-            loc: '/boards'
-          },
-          {
-            name: 'Login or sign up',
-            loc: '/login'
-          },
-          {
-            name: 'Experiments',
-            loc: '/experiments'
-          }
-        ],
-
-        // External pages
-        links: [
-          {
-            name: 'YouTube',
-            url: 'https://www.youtube.com/thxbro79'
-          },
-          {
-            name: 'Steam',
-            url: 'https://steamcommunity.com/id/kumo_duck/'
-          },
-          {
-            name: 'Github',
-            url: 'https://www.github.com/ConnerFrancis'
-          }
         ]
-
       }
     },
 
@@ -125,29 +85,6 @@
     // Font
     font-family: $font-main;
 
-    .left-wrapper {
-      // Display
-      display: flex;
-      flex-direction: column;
-
-      .arrow-link {
-        // Colors
-        text-decoration: none;
-        // Size
-        padding-bottom: 12px;
-        // Misc
-        cursor: pointer;
-
-        &:last-child {
-          padding-top: 0;
-        }
-      }
-
-      .link {
-        font-weight: normal;
-      }
-    }
-
     .right-wrapper {
       // Display
       display: flex;
@@ -160,7 +97,6 @@
         image-rendering: -webkit-optimize-contrast;
         image-rendering: -moz-crisp-edges;
         image-rendering: pixelated;
-        //filter: drop-shadow(0px 8px 8px rgba(0,0,0,0.5));
       }
     }
   }

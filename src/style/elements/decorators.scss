@@ -52,3 +52,28 @@
     }
   }
 }
+
+.x-link {
+  position: relative;
+  height: 16px;
+  width: 16px;
+  cursor: pointer;
+  
+  &::before, &::after {
+    position: absolute;
+    content: '';
+    height: 2px;
+    width: 16px;
+    background-color: $brand-light;
+  }
+  &::before {
+    top: 8px;
+    left: 0;
+    transform: rotate(45deg);
+  }
+  &::after {
+    top: 8px;
+    left: 0;
+    transform: rotate(-45deg);
+  }
+}
