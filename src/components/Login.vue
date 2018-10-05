@@ -51,6 +51,7 @@
             type: 'success',
             message: 'Logged in successfully!'
           })
+          //this.$router.go(-1)
         }).catch((e) => {
           // Errors
           this.status = e.message

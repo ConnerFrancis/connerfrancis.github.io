@@ -92,7 +92,8 @@
       padding-left: 64px;
 
       img {
-        height: 160px;
+        height: 144px;
+        width: 147px;
         -ms-interpolation-mode: nearest-neighbor;
         image-rendering: -webkit-optimize-contrast;
         image-rendering: -moz-crisp-edges;

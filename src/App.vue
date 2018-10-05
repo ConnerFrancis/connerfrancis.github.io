@@ -1,6 +1,7 @@
 <template>
 
   <div id="app" class="container">
+    <sidebar></sidebar>
     <router-view class="router-view"></router-view>
     <toast></toast>
   </div>
@@ -9,12 +10,14 @@
 
 <script>
 
-  import Toast from '@/components/Toast'
+  import Sidebar from '@/components/Sidebar'
+  import Toast   from '@/components/Toast'
 
   export default {
     name: 'App',
     
     components: {
+      sidebar: Sidebar,
       toast: Toast
     }
   }

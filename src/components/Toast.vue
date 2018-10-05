@@ -8,8 +8,8 @@
         :class="toast.type"
       >
         <div class="wrapper">
-          <a class="x-link" @click="deprecateToast(toast.id)"></a>
           <h4>{{ toast.type }}</h4>
+          <a class="x-link" @click="deprecateToast(toast.id)"></a>
         </div>
         <p>{{ toast.message }}</p>
       </div>
@@ -48,11 +48,12 @@
   #toasts {
     position: fixed;
     bottom: 0;
-    margin: 0 0 32px 32px;
+    right: 0;
+    padding: 32px;
     // Display
     display: flex;
-    justify-content: flex-start;
-    align-items: flex-start;
+    justify-content: flex-end;
+    align-items: flex-end;
     flex-direction: column;
 
     .toast {
@@ -72,6 +73,7 @@
       color: $text-light;
       // Effect
       transition: background-color 0.35s ease, color 0.35s ease;
+      .x-link::before, .x-link::after { transition: background-color 0.35s ease; }
       cursor: pointer;
       
       .wrapper {
@@ -82,7 +84,7 @@
         
         h4 {
           text-transform: capitalize;
-          margin-left: 8px;
+          margin-right: 8px;
         }
       }
 

@@ -40,6 +40,7 @@
             type: 'success',
             message: 'Created account successfully!'
           })
+          //this.$router.go(-1)
         }).catch((e) => {
           this.$store.dispatch('toast/addToast', {
             type: 'error',

@@ -28,6 +28,7 @@
             type: 'success',
             message: 'Logged out successfully!'
           })
+          //this.$router.go(-1)
         }).catch((e) => {
           this.status = e.message
         })

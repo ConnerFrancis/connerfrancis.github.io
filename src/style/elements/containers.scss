@@ -6,9 +6,9 @@ $columns: 12;
 
 .container {
   // Display
-  display: flex;
+  display: inline-flex;
   flex-direction: row;
-  flex-wrap: no-wrap;
+  flex-wrap: wrap;
   
   // Modifiers
   
@@ -19,20 +19,31 @@ $columns: 12;
   &.dir-col {
     flex-direction: column;
   }
-  
-  .col {
-    flex-basis: 100%;
-    flex: 1;
-    //width: auto;
-    overflow: wrap;
-  
-    @for $c from 1 through $columns {
-      &-#{$c} {
-        flex-basis: (100 / ($columns / $c)) * 1%;
-        //width: ((100% / $columns) * $c);
-      }
+}
+
+.col {
+  flex-basis: 100%;
+  flex: 1;
+  width: auto;
+  overflow: wrap;
+  align-self: flex-start;
+  justify-self: stretch;
+
+  @for $c from 1 through $columns {
+    &-#{$c} {
+      flex-grow: 0;
+      flex-shrink: 0;
+      flex-basis: (100 / ($columns / $c)) * 1%;
+      width: (100 / ($columns / $c)) * 1%;
     }
   }
+}
+
+.modal {
+  @extend .col;
+  flex-grow: 0;
+  flex-basis: (100 / ($columns / 5) * 1%);
+  width: (100 / ($columns / 5)) * 1%;
 }
 
 /**
@@ -43,34 +54,14 @@ $columns: 12;
   // Display
   flex-direction: column;
   // Colors
-  color: $text-light;
+  color: $text-dark;
+  // Size
+  padding: 32px;
   
   &.dark { background-color: $brand-dark; color: $text-light; }
-  
-  .inner {
-    // Display
-    display: flex;
-    justify-content: flex-start;
-    align-items: flex-start;
-    flex-direction: column;
-    // Size
-    padding: 48px;
-    // Colors
-    background-color: $brand-light;
-    color: $text-dark;
-    
-    &.dark {
-      // Colors
-      background-color: $brand-dark;
-      color: $text-light;
-    }
-  }
-  
-  .footer {
-    // Display
-    display: flex;
-    justify-content: flex-end;
-    align-items: flex-start;
-    flex-direction: row;
-  }
+  &.light { background-color: $brand-light; color: $text-dark; }
+}
+
+.top-spaced {
+  margin-top: 25vh;
 }
