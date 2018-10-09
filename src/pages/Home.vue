@@ -4,10 +4,10 @@
 
     <h1 class="col-12">The <span class="text-color-main">cobbler</span> experience.</h1>
 
-    <site-links class="col-12"></site-links>
+    <site-links class="col-12" show-home="false"></site-links>
     
     <div class="img-wrapper">
-      <img src="/static/twotone_flipped.png" />
+      <img src="/static/twotone_flipped_white.png" />
     </div>
 
   </div>
@@ -115,9 +115,6 @@
         image-rendering: -webkit-optimize-contrast;
         image-rendering: -moz-crisp-edges;
         image-rendering: pixelated;
-        
-        // @DEV @DEV
-        filter: invert(100%) saturate(100%) brightness(100%);
       }
     }
   }

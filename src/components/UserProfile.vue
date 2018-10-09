@@ -34,10 +34,6 @@
 
 <script>
   
-  import db from '@/db'
-  
-  const usersRef = db.collection('users')
-  
   export default {
     name: 'UserProfile',
     
@@ -93,7 +89,6 @@
               type: 'error',
               message: `User ${this.id} does not exist.`
             })
-            this.$router.go(-1)
           }
         })
     }

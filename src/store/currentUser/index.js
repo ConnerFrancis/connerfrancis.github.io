@@ -96,14 +96,6 @@ const getters = {
   // NOTE: maybe use es6 destructors idk
   loggedIn: state => {
     return state.loggedIn
-  },
-
-  data: state => {
-    return state.data
-  },
-
-  doc: state => {
-    return state.doc
   }
 
 }

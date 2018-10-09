@@ -3,9 +3,15 @@
   <div id="sidebar" :class="theme">
     
     <transition name="sidebar-slide">
+    
     <div class="sidebar" v-if="showSidebar">
       <site-links></site-links>
+      <div class="current-user">
+        {{ currentUser }}
+        test
+      </div>
     </div>
+    
     </transition>
     
     <div class="nav">
@@ -22,18 +28,22 @@
 <script>
   
   import SiteLinks from '@/components/SiteLinks'
+  
+  import db from '@/db'
 
   export default {
     name: 'Sidebar',
     
     data () {
       return {
-        showSidebar: false
+        showSidebar: false,
+        currentUser: this.$store.state.currentUser.data
       }
     },
     
     computed: {
       
+      // Get the current theme
       theme () {
         if(this.showSidebar === true) {
           return 'dark'
@@ -115,15 +125,27 @@
       top: 0;
       right: 0;
       display: flex;
+      align-items: flex-start;
+      justify-content: flex-start;
       flex-direction: column;
-      align-self: flex-end;
       // Size
       height: 100vh;
       min-width: 340px;
-      padding: 48px 48px 16px 48px;
+      max-width: 480px;
+      padding: 48px 48px 32px 48px;
       // Colors
       background-color: $brand-dark-less;
       color: $brand-light;
+      
+      .current-user {
+        // @DEV
+        background-color: blue;
+        // Display
+        position: relative;
+        margin-top: auto;
+        justify-self: flex-end;
+        display: flex;
+      }
     }
     
     .nav {
