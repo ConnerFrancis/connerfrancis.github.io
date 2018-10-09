@@ -25,8 +25,9 @@ h1, h2, h3, h4, h5, h6 {
 //}
 
 h1 {
-  font-size: 250%;
-  font-weight: bold;
+  font-size: 450%;
+  font-family: $font-accent;
+  font-weight: 700;
 }
 h2 {
   font-size: 175%;
@@ -47,4 +48,15 @@ h5 {
 }
 h6 {
   
+}
+
+/**
+ * Modifiers
+ */
+
+.text-color-light {
+  color: $text-light;
+}
+.text-color-main {
+  color: $brand-main;
 }

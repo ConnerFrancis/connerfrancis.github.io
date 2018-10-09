@@ -6,10 +6,11 @@
         v-for="toast in currentList"
         :key="toast.id"
         :class="toast.type"
+        @click="$store.dispatch('toast/deprecateToast', toast.id)"
       >
         <div class="wrapper">
           <h4>{{ toast.type }}</h4>
-          <a class="x-link" @click="deprecateToast(toast.id)"></a>
+          <a class="x-link"></a>
         </div>
         <p>{{ toast.message }}</p>
       </div>
@@ -30,12 +31,6 @@
       ...mapGetters('toast', [
         'currentList'
       ])
-    },
-
-    methods: {
-      deprecateToast (id) {
-        this.$store.dispatch('toast/deprecateToast', id)
-      }
     }
   }
 
@@ -48,12 +43,12 @@
   #toasts {
     position: fixed;
     bottom: 0;
-    right: 0;
-    padding: 32px;
+    left: 0;
+    margin: 32px;
     // Display
     display: flex;
     justify-content: flex-end;
-    align-items: flex-end;
+    align-items: flex-start;
     flex-direction: column;
 
     .toast {
@@ -72,7 +67,7 @@
       background-color: $brand-dark;
       color: $text-light;
       // Effect
-      transition: background-color 0.35s ease, color 0.35s ease;
+      transition: background-color 0.35s ease, color 0.35s ease, box-shadow 0.35s ease;
       .x-link::before, .x-link::after { transition: background-color 0.35s ease; }
       cursor: pointer;
       
@@ -103,6 +98,15 @@
         
         .x-link::before, .x-link::after { background-color: $brand-dark; }
       }
+    }
+    
+    &.dark .toast {
+      box-shadow: inset 0 0 0 1px rgba($brand-light, 0.2);
+      
+      &.error { box-shadow: none; }
+      &.success { box-shadow: none; }
+      
+      &:hover { box-shadow: none; }
     }
 
     .toasts-enter {

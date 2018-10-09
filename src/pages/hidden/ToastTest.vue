@@ -52,10 +52,11 @@
         this.$store.dispatch('toast/addToast', {
           type: this.newType,
           message: this.newMessage
-        }).then(() => {
-          // etc
         }).catch((e) => {
-          // etc
+          this.$store.dispatch('toast/addToast', {
+            type: 'error',
+            message: `(${e.code}) ${e.message}`
+          })
         })
       }
     }

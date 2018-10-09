@@ -1,9 +1,7 @@
 .arrow-link {
-  // Colors
-  color: $brand-dark;
   position: relative;
-  // Font
-  font-weight: bold;
+  color: inherit;
+  text-decoration: none;
   
   &::before, &::after {
     content: '';
@@ -14,24 +12,24 @@
   
   &::before {
     // Size
-    width: 16px;
+    width: 1em;
     // Colors
-    border-bottom: 2px $brand-light solid;
+    border-bottom: 0.125em $brand-light solid;
     // Pos
-    left: -32px; // -24px
-    top: 8px;
+    left: -2em; // -24px
+    top: 0.5em;
   }
   &::after {
     // Size
-    height: 8px;
-    width: 8px;
+    height: 0.5em;
+    width: 0.5em;
     // Colors
-    border-top: 2px $brand-light solid;
-    border-right: 2px $brand-light solid;
+    border-top: 0.125em $brand-light solid;
+    border-right: 0.125em $brand-light solid;
     background-color: rgba(0,0,0,0);
     // Pos
-    left: -24px; // -16px
-    top: 5px;
+    left: -1.5em; // -16px
+    top: 0.3125em;
     // Misc
     transform: rotate(45deg);
   }
@@ -45,10 +43,10 @@
     }
     
     &::before {
-      left: -24px;
+      left: -1.5em;
     }
     &::after {
-      left: -16px;
+      left: -1em;
     }
   }
 }
@@ -102,8 +100,9 @@
 
 .arrow-left {
   position: relative;
-  height: 1em;
-  width: 2em;
+  height: 32px;
+  width: 48px;
+  cursor: pointer;
   
   &::before, &::after {
     content: '';
@@ -111,14 +110,72 @@
   }
   
   &::before {
-    background-color: $brand-dark;
-    height: 2px;
-    width: 16px;
+    top: 11px;
+    left: 25%;
+    height: 11px;
+    width: 11px;
+    border-left: 3px solid $brand-dark;
+    border-top: 3px solid $brand-dark;
+    transform: rotate(-45deg);
   }
   
   &::after {
-    background-color: $brand-dark;
-    height: 2px;
-    width: 16px;
+    left: 25%;
+    top: 15px;
+    border-bottom: 3px solid $brand-dark;
+    width: 24px;
+    transition: width 0.15s ease;
+  }
+  
+  &:hover::before, &:hover::after { border-color: $brand-light; }
+  &:hover::after { width: 32px; }
+}
+
+.arrow-right {
+  @extend .arrow-left;
+  
+  &::before {
+    left: 50%;
+    transform: rotate(135deg);
+  }
+  
+  &::after {
+    left: 25%;
+    transition: width 0.15s ease, left 0.15s ease;
+  }
+  &:hover::after { left: 4px; }
+}
+
+.menu {
+  position: relative;
+  height: 20px;
+  width: 24px;
+  margin: 8px 16px 16px;
+  cursor: pointer;
+  
+  border-top: 3px solid $brand-dark;
+  
+  &::before, &::after {
+    content: '';
+    position: absolute;
+    left: 0;
+    width: 100%;
+    border-bottom: 3px solid $brand-dark;
+  }
+  
+  &::before {
+    bottom: 50%;
+  }
+  
+  &::after {
+    width: 66%;
+    transition: width 0.15s ease;
+    bottom: 0;
+  }
+  
+  &:hover {
+    border-color: $brand-light;
+    &::before { border-color: $brand-light; }
+    &::after { border-color: $brand-light; width: 100%; }
   }
 }

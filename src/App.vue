@@ -1,9 +1,9 @@
 <template>
 
-  <div id="app" class="container">
+  <div id="app" class="container" :class="theme">
+    <router-view class="router-view" :class="theme"></router-view>
     <sidebar></sidebar>
-    <router-view class="router-view"></router-view>
-    <toast></toast>
+    <toast :class="theme"></toast>
   </div>
 
 </template>
@@ -19,6 +19,14 @@
     components: {
       sidebar: Sidebar,
       toast: Toast
+    },
+    
+    computed: {
+      
+      theme () {
+        return this.$store.state.theme.theme
+      }
+      
     }
   }
 

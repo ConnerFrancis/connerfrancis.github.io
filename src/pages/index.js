@@ -15,7 +15,8 @@ const pages = [
     name: 'Home',
     meta: {
       title: 'the cobbler experience',
-      name: 'Home'
+      name: 'Home',
+      theme: 'dark'
     }
   },
   {

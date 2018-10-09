@@ -1,6 +1,6 @@
 <template>
   
-  <div id="site-list">
+  <div id="site-links">
     
     <!--
     The following portion is manual links.
@@ -10,10 +10,12 @@
     that we can display a "section not available"
     message because this site is unfinished.
     -->
+    <p>Pages</p>
     <a class="arrow-link page" @click="unfinishedMessage">Boards</a>
     <router-link class="arrow-link page" to="/login">Login or sign up</router-link>
     <a class="arrow-link page" @click="unfinishedMessage">Experiments</a>
     
+    <p>Links</p>
     <a class="arrow-link link" href="https://www.youtube.com/thxbro79">YouTube</a>
     <a class="arrow-link link" href="https://steamcommunity.com/id/kumo_duck/">Steam</a>
     <a class="arrow-link link" href="https://www.github.com/ConnerFrancis">Github</a>
@@ -103,13 +105,13 @@
 
 <style lang="scss" scoped>
   
-  #site-list {
+  #site-links {
     // Display
     display: flex;
     flex-direction: column;
     
-    .arrow-link {
-      // Colors
+    .arrow-link, p {
+      // Font
       text-decoration: none;
       // Size
       padding-bottom: 12px;
@@ -121,6 +123,14 @@
       }
       
       &.link { font-weight: normal; }
+    }
+    
+    p {
+      cursor: default;
+      font-size: 66.66%;
+      opacity: 0.5;
+      margin-top: 1.5em;
+      &:first-child { margin-top: 0; }
     }
   }
   
