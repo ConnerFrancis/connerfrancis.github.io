@@ -103,6 +103,9 @@
       padding: 16px;
       
       img {
+        // Display
+        z-index: -2;
+        // Size
         transform: rotate(17deg);
         min-width: 480px;
         width: 50vw;

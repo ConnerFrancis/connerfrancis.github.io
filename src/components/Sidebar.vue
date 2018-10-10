@@ -17,7 +17,7 @@
     <div class="nav">
       <div class="arrow-left" @click="$router.go(-1)"></div>
       <div class="arrow-right" @click="handleForward"></div>
-      <div class="menu" @click="showSidebar = !showSidebar"></div>
+      <div class="menu" @click="handleAppClick('menu')"></div>
     </div>
   </div>
   
@@ -37,6 +37,9 @@
     data () {
       return {
         showSidebar: false,
+        menuClicked: false,
+        appClicked: false,
+        
         currentUser: this.$store.state.currentUser.data
       }
     },
@@ -45,6 +48,9 @@
       
       // Get the current theme
       theme () {
+        // This sets the nav buttons to the dark
+        // theme so they are visible on the menu
+        // when the sidebar menu is open
         if(this.showSidebar === true) {
           return 'dark'
         } else {
@@ -59,6 +65,24 @@
     },
     
     methods: {
+      
+      // Handle outside menu clicks (called from App.vue)
+      handleAppClick (source) {
+        
+        if(source == 'app') {
+          this.showSidebar = false
+          this.appClicked = true
+          this.menuClicked = false
+        }
+        if(source == 'menu') {
+          this.menuClicked = true
+          
+          if(this.appClicked == true) {
+            this.appClicked = false
+            this.showSidebar = true
+          }
+        }
+      },
       
       // Go forward
       handleForward () {
@@ -85,7 +109,7 @@
     // Display
     position: fixed;
     display: flex;
-    z-index: 1;
+    z-index: 2;
     bottom: 0;
     right: 0;
     // Size 

@@ -1,8 +1,14 @@
 <template>
 
-  <div id="app" class="container" :class="theme">
-    <router-view class="router-view" :class="theme"></router-view>
-    <sidebar></sidebar>
+  <div id="app" class="container" :class="theme" @click="handleAppClick">
+    <transition name="router-transition" mode="out-in" appear>
+      <router-view
+        class="router-view"
+        @click="handleAppClick"
+        :class="theme"
+      ></router-view>
+    </transition>
+    <sidebar ref="sidebar"></sidebar>
     <toast :class="theme"></toast>
   </div>
 
@@ -27,6 +33,16 @@
         return this.$store.state.theme.theme
       }
       
+    },
+    
+    methods: {
+      
+      handleAppClick () {
+        // You have to call ref methods
+        // outside of the template markup
+        this.$refs.sidebar.handleAppClick('app')
+      }
+      
     }
   }
 
@@ -37,16 +53,30 @@
   @import './style/main.scss';
 
   #app {
-    /* Display/size */
+    // Display/size
     height: 100vh;
     width: 100%;
     display: flex;
     justify-content: stretch;
     align-items: stretch;
-    /* Font */
+    // Font
     -webkit-font-smoothing: antialiased;
     -moz-osx-font-smoothing: grayscale;
     text-align: left;
+    
+    // Theme changes
+    transition: background-color 0.1s ease;
+    &.dark {
+      background-color: $brand-dark;
+    }
+    
+    .router-transition-enter-active, .router-transition-leave-active {
+      transition: opacity 0.15s ease, transform 0.1s ease;
+    }
+    .router-transition-enter, .router-transition-leave-to {
+      transform: translateY(32px);
+      opacity: 0;
+    }
   }
 
 </style>

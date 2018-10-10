@@ -19,7 +19,9 @@ router.beforeEach((to, from, next) => {
   if(to.meta.hasOwnProperty('theme')) {
     store.dispatch('theme/setTheme', to.meta.theme)
   } else {
-    store.dispatch('theme/setTheme', 'default')
+    store.dispatch('theme/setTheme', 'default').catch(e => {
+      store.dispatch('toast/addToast', `(${e.code}) ${e.message}`)
+    })
   }
   
   next()
