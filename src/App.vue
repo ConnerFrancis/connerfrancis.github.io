@@ -40,7 +40,7 @@
       handleAppClick () {
         // You have to call ref methods
         // outside of the template markup
-        this.$refs.sidebar.handleAppClick('app')
+        this.$refs.sidebar.handleAppClick()
       }
       
     }

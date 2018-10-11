@@ -17,7 +17,7 @@
     <div class="nav">
       <div class="arrow-left" @click="$router.go(-1)"></div>
       <div class="arrow-right" @click="handleForward"></div>
-      <div class="menu" @click="handleAppClick('menu')"></div>
+      <div class="menu" @click="menuClicked = true"></div>
     </div>
   </div>
   
@@ -38,7 +38,6 @@
       return {
         showSidebar: false,
         menuClicked: false,
-        appClicked: false,
         
         currentUser: this.$store.state.currentUser.data
       }
@@ -67,20 +66,18 @@
     methods: {
       
       // Handle outside menu clicks (called from App.vue)
-      handleAppClick (source) {
+      handleAppClick () {
         
-        if(source == 'app') {
-          this.showSidebar = false
-          this.appClicked = true
+        // If the menu button was clicked,
+        // > toggle the sidebar
+        // > reset the status
+        if(this.menuClicked === true) {
+          this.showSidebar = !this.showSidebar
           this.menuClicked = false
-        }
-        if(source == 'menu') {
-          this.menuClicked = true
-          
-          if(this.appClicked == true) {
-            this.appClicked = false
-            this.showSidebar = true
-          }
+        // If the menu button was not clicked,
+        // > hide the sidebar
+        } else {
+          this.showSidebar = false
         }
       },
       
