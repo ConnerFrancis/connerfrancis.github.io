@@ -70,6 +70,7 @@
             this.user = doc.data()
             
             // Get the posts for the user
+            // TODO: refactor with db query first then get posts (collection then forEach)
             doc.data().posts.forEach(post => {
               this.$db
                 .collection('posts')
