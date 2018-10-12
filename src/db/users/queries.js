@@ -12,11 +12,11 @@ export default {
   /**
    * Queries any given user id
    * 
-   * @id user id in database
-   * @return promise of user data
+   * @param arg: user id in database
+   * @return: promise of user data
    */
   async get (id) {
-    // Return and await a response from a db query
+    // Query the db and await response
     return await
       this.ref()
       .doc(id)
@@ -26,8 +26,32 @@ export default {
         if (doc.exists) {
           return doc.data()
         } else {
-          throw ({code: 'users/queries/nonexistant-doc', message: `User with id ${id} does not exist.`})
+          throw ({code: 'users/queries/get/nonexistant-doc', message: `User with id ${id} does not exist.`})
         }
+      }).catch(e => {
+        throw (e)
+      })
+  },
+  
+  /**
+   * Get multiple documents
+   * 
+   * @param limit: limit of query
+   * @return: promise of documents
+   */
+  async getMult (limit) {
+    // Query db for users in limit
+    return await
+      this.ref()
+      .get()
+      .then(snapshot => {
+        var list = []
+        
+        snapshot.forEach(doc => {
+          list.push(doc.data())
+        })
+        
+        return list
       }).catch(e => {
         throw (e)
       })
@@ -36,8 +60,8 @@ export default {
   /**
    * Loops through each user in the database
    * 
-   * @callback function to run when called
-   * @limit limit of the query
+   * @param input: function to run when called
+   * @param limit: of the query
    */
   async forEach (callback, limit = 1) {
     return await
